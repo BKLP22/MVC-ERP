@@ -4,7 +4,7 @@ CREATE DATABASE erp;
 USE erp;
 
 CREATE TABLE proveedores(
-    id_proveedor VARCHAR(3) PRIMARY KEY,
+    id_proveedor VARCHAR(3) AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(40),
     cp VARCHAR(6),
     ciudad VARCHAR(20),
@@ -26,19 +26,19 @@ CREATE TABLE factura_compra(
     id_compra INT(6),
     id_producto VARCHAR(6),
     cantidad INT(4),
-    pvp_unitario DECIMAL (9,2),
+    precio_unitario DECIMAL (9,2),
     total DECIMAL (9,2),
     PRIMARY KEY (id_compra,id_producto)
 );
 
 CREATE TABLE productos(
     id_producto VARCHAR(6) PRIMARY KEY,
+    precio_unitario DECIMAL(9,2),
     pvp DECIMAL(9,2),
     modelo VARCHAR(30),
     marca VARCHAR(30),
     categoria VARCHAR(20),
     descripcion VARCHAR(60),
-    coste_total DECIMAL(9,2),
     stock INT(6)
 );
 
@@ -56,12 +56,12 @@ CREATE TABLE factura_venta(
 -- insert into factura values ("1", "p008", 1, "1")
 
 CREATE TABLE envio(
-    id_pedido INT(6) AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT(6) PRIMARY KEY,
     total DECIMAL(9,2),
     dni_cliente VARCHAR(9),
     coste_envio DECIMAL(5,2),
-    tiempo_estimado DATETIME,
-    tiempo_real DATETIME,
+    tiempo_estimado VARCHAR(30),
+    tiempo_real VARCHAR(30),
     fecha_venta DATETIME,
     fecha_envio DATETIME,
     direccion VARCHAR(50)
@@ -87,6 +87,21 @@ ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KE
 ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idcompra FOREIGN KEY (id_compra) REFERENCES compras(id_compra);
 
 
--- NOS SOBRAN LOS ID DE LAS FACTURAS;
+-- inserts
+
+insert into proveedores values("Casaca SL", 28007, "Madrid", "casaca@gmail.com", 733456211, "ES7921000813610123456789");
+
+insert into compras values (1, 2022-11-22, 1040, 8.30);
+
+insert into factura_compra values (1, 0001, 100, 10.4,  1048.3);
+
+insert into productos values (0001,10.4,  13.2, "EX12", "SUPERMARCA", "Limpieza", "Producto altamente eficaz para quitar manchas", 98 );
+
+insert into factura_venta values (1, 0001, 2, 13.2, 26.4);
+
+insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22, 2022-11-23, "Calle Cortada n34 7A" );
+
+insert into clientes values ("35678788C", "Steven", "Piedra", "steven@gmail.com", "Madrid", 28037, "ES7921000813610723462213")
+
 
 
