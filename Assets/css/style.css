@@ -152,6 +152,8 @@ header {
     width: 80%;
     height: 4.385964912280702vh;
     border: none;
+    position: relative;
+    
 }
 
 textarea:focus,
@@ -161,8 +163,14 @@ input:focus {
 
 .buscar {
     position: absolute;
-    opacity: 0.3;
     width: 38px;
+    color: white;
+}
+
+.divresultado 
+{
+    position: absolute;
+    top: 64px;
 }
 
 #usuario {
@@ -299,3 +307,24 @@ footer div.col-10 {
     padding: 8px 16px;
     text-decoration: none;
 }
+
+/*Clases para el div donde se vuelcan resultados*/
+
+.bloque0 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1% 0;
+}
+
+.bloque1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+

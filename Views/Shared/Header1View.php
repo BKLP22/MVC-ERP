@@ -13,11 +13,13 @@
                 <a href="#" class="enlaces">Contactos</a>
            </div> 
         </div>
-        <div class="divlupa col-4">
+        <form class="divlupa col-4" id="formConsulta1">
             
-                <div class="buscar"><img src="Assets/img/buscar.png" alt="" id="lupa"></div>
-                <div><input type="text" name="" id="campotexto1" class="pl"></div>
-        </div>
+                <div><input type="text" name="" id="campotexto1" class="pl">
+                <input type="image" value=""  src="Assets/img/lupa.png" id="botonConsulta1" class="buscar"></input>
+                </div>
+                
+        </form>
         <div class="col-2" id="usuario">
             <a href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="" class="erp"></a>
             
