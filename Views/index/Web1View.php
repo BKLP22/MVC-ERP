@@ -1,4 +1,5 @@
-<section class="col-12 flex">
+<section class="inicio ">
+    <section class="col-12 flex ">
         <div class="col-6 ">
             <img src="Assets/img/cubrirhueco1.jpg" alt="" class="imagenes_principal">
         </div>
@@ -34,4 +35,4 @@
         <div class="col-6">
             <img src="Assets/img/cucbrirhueco2.jpg" alt="" class="imagenes_principal">
         </div>
-    </section>
+    </section></section>
