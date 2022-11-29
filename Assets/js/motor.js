@@ -60,7 +60,7 @@ window.addEventListener("load", function(){
     //para el resultado de la venta, creamos un div pequeño donde ira un a que enlace con la parte buscada
     //const contenedor2 = document.getElementById("contenedor2");
     let div = document.createElement("div");
-    div.classList("divresultado");
+    div.classList.add("divresultado");
     div.appendChild(formconsulta1);
     
     // Asociacion del evento y llamada a la funcion cuando el boton exista

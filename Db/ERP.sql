@@ -4,7 +4,7 @@ CREATE DATABASE erp;
 USE erp;
 
 CREATE TABLE proveedores(
-    id_proveedor VARCHAR(3) AUTO_INCREMENT PRIMARY KEY,
+    id_proveedor INTEGER(3) AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(40),
     cp VARCHAR(6),
     ciudad VARCHAR(20),
@@ -15,7 +15,7 @@ CREATE TABLE proveedores(
 
 CREATE TABLE compras(
     id_compra INT(6) AUTO_INCREMENT PRIMARY KEY,
-    id_proveedor VARCHAR(3),
+    id_proveedor INTEGER(3),
     fecha_compra DATETIME,
     precio DECIMAL(9,2),
     coste_logistico DECIMAL(6,2)
@@ -78,30 +78,46 @@ CREATE TABLE clientes(
     tlf VARCHAR(14)
 );
 
+CREATE TABLE escandallo(
+    id_compuesto VARCHAR(6),
+    id_producto VARCHAR(6),
+    nombre VARCHAR(30),
+    uds INTEGER(3),
+    PRIMARY KEY (id_compuesto,id_producto)
+);
+
 ALTER TABLE compras ADD CONSTRAINT fk_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedores (id_proveedor);
 ALTER TABLE compras ADD CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
 ALTER TABLE factura_venta ADD CONSTRAINT factura FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
 ALTER TABLE envio ADD CONSTRAINT fk_pedidos_dni FOREIGN KEY (dni_cliente) REFERENCES clientes (dni);
 ALTER TABLE factura_venta ADD CONSTRAINT fk_factura_idenvio FOREIGN KEY (id_pedido) REFERENCES envio (id_pedido);
-ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KEY (id_producto) REFERENCES productos(id_producto);
+
+--ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KEY (id_producto) REFERENCES productos(id_producto);
+ALTER TABLE productos ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KEY (id_producto) REFERENCES factura_compra(id_producto);
+ALTER TABLE escandallo ADD CONSTRAINT fk_escandallo_productos FOREIGN KEY (id_compuesto) REFERENCES productos(id_producto);
+ALTER TABLE productos ADD CONSTRAINT fk_produtos_escandallo FOREIGN KEY (id_producto) REFERENCES escandallo(id_compuesto);
+
 ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idcompra FOREIGN KEY (id_compra) REFERENCES compras(id_compra);
 
 
 -- inserts
 
-insert into proveedores values("Casaca SL", 28007, "Madrid", "casaca@gmail.com", 733456211, "ES7921000813610123456789");
-
-insert into compras values (1, 2022-11-22, 1040, 8.30);
-
+insert into proveedores values(NULL,"Casaca SL", 28007, "Madrid", "casaca@gmail.com", 733456211, "ES7921000813610123456789");
+insert into compras values (NULL,1, 2022-11-22, 1040, 8.30);
 insert into factura_compra values (1, 0001, 100, 10.4,  1048.3);
 
-insert into productos values (0001,10.4,  13.2, "EX12", "SUPERMARCA", "Limpieza", "Producto altamente eficaz para quitar manchas", 98 );
+insert into productos values 
+(0001,10.4,  13.2, "EX12", "SUPERMARCA", "Limpieza", "Producto altamente eficaz para quitar manchas", 98 ),
+(0002,5.50,10.50,NULL,NULL,"Produccion","Mano de obra",1000000);
 
+
+insert into clientes values ("35678788C", "Steven", "Piedra", "steven@gmail.com", "Madrid", 28037, "ES7921000813610723462213","629749431");
+insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22, 2022-11-23, "Calle Cortada n34 7A" );
 insert into factura_venta values (1, 0001, 2, 13.2, 26.4);
 
-insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22, 2022-11-23, "Calle Cortada n34 7A" );
 
-insert into clientes values ("35678788C", "Steven", "Piedra", "steven@gmail.com", "Madrid", 28037, "ES7921000813610723462213")
+
+
 
 
 
