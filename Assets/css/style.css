@@ -117,6 +117,15 @@ img {
     display: flex;
     flex-direction: column;
 }
+.erpa{
+    text-decoration: none;
+    text-align: center;
+    font-size:xx-large;
+    color: rgb(255, 255, 255);
+  padding: 2%;
+  cursor: pointer;
+}
+
 
 .center {
     display: flex;
@@ -126,23 +135,32 @@ img {
 }
 
 header {
-    background-color: #1866AD;
+    background-color: #0e406e;
     align-items: center;
-    height: 64px;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    
+    box-shadow: 0 1px 10px 0px #b8b8b8;
+    border-color: #333333;
+    box-shadow: inset;
 }
-.erp{
-    color: white
-}
+
 .enlaces{
     color: white;
-    font-size: 1.2em;
+    font-size: large;
     text-decoration: none;
+    padding: 5%;
+    border-radius: 4px;
+    width: 100%;
 }
+
+
 .botones {
-    
     border: none;
-    width: 25%;
+    text-align: center;  
 }
+
 
 #campotexto1 {
     font-size: 1.5em;
