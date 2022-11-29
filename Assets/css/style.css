@@ -156,6 +156,10 @@ header {
 }
 
 
+.enlaceERP{
+    color: white;
+    text-decoration: none;
+}
 .botones {
     border: none;
     text-align: center;  
@@ -221,13 +225,13 @@ footer div.col-10 {
 .Slogin {
     text-align: center;
     margin: 11%;
-    height: auto;
+    height: 33vh; 
 }
 
 .Sregister {
     text-align: center;
     margin: 11%;
-    height: 60vh;
+    height: 50vh;
 
 }
 
@@ -255,7 +259,7 @@ footer div.col-10 {
 }
 
 .form1 div {
-    padding: 1%;
+    
     border-radius: 5px;
 }
 
