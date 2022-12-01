@@ -42,6 +42,7 @@ CREATE TABLE productos(
     stock INT(6)
 );
 
+ALTER TABLE productos ADD COLUM final BOOLEAN;
 
 CREATE TABLE factura_venta(
     id_pedido INT(6),
@@ -85,17 +86,18 @@ CREATE TABLE escandallo(
     uds INTEGER(3),
     PRIMARY KEY (id_compuesto,id_producto)
 );
+-- Claves foraneas del proceso de venta
+ALTER TABLE envio ADD CONSTRAINT fk_pedidos_dni FOREIGN KEY (dni_cliente) REFERENCES clientes (dni);
+ALTER TABLE envio ADD CONSTRAINT fk_factura_idenvio FOREIGN KEY (id_pedido) REFERENCES factura_venta (id_pedido);
+ALTER TABLE factura_venta ADD CONSTRAINT factura FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
 
 ALTER TABLE compras ADD CONSTRAINT fk_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedores (id_proveedor);
-ALTER TABLE compras ADD CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
-ALTER TABLE factura_venta ADD CONSTRAINT factura FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
-ALTER TABLE envio ADD CONSTRAINT fk_pedidos_dni FOREIGN KEY (dni_cliente) REFERENCES clientes (dni);
-ALTER TABLE factura_venta ADD CONSTRAINT fk_factura_idenvio FOREIGN KEY (id_pedido) REFERENCES envio (id_pedido);
+-- ALTER TABLE compras ADD CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
 
 --ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KEY (id_producto) REFERENCES productos(id_producto);
 ALTER TABLE productos ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KEY (id_producto) REFERENCES factura_compra(id_producto);
 ALTER TABLE escandallo ADD CONSTRAINT fk_escandallo_productos FOREIGN KEY (id_compuesto) REFERENCES productos(id_producto);
-ALTER TABLE productos ADD CONSTRAINT fk_produtos_escandallo FOREIGN KEY (id_producto) REFERENCES escandallo(id_compuesto);
+ALTER TABLE productos ADD CONSTRAINT fk_produtos_escandallo FOREIGN KEY (id_producto) REFERENCES escandallo(id_producto);
 
 ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idcompra FOREIGN KEY (id_compra) REFERENCES compras(id_compra);
 
@@ -108,12 +110,13 @@ insert into factura_compra values (1, 0001, 100, 10.4,  1048.3);
 
 insert into productos values 
 (0001,10.4,  13.2, "EX12", "SUPERMARCA", "Limpieza", "Producto altamente eficaz para quitar manchas", 98 ),
-(0002,5.50,10.50,NULL,NULL,"Produccion","Mano de obra",1000000);
+(0002,5.50,10.50,NULL,NULL,"Produccion","Mano de obra",1000000,0);
 
 
 insert into clientes values ("35678788C", "Steven", "Piedra", "steven@gmail.com", "Madrid", 28037, "ES7921000813610723462213","629749431");
-insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22, 2022-11-23, "Calle Cortada n34 7A" );
 insert into factura_venta values (1, 0001, 2, 13.2, 26.4);
+
+insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22, 2022-11-23, "Calle Cortada n34 7A" );
 
 
 

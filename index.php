@@ -12,6 +12,5 @@
     <?php require_once "Views/Shared/Header1View.php";?>
     <?php require_once "Views/index/Web1View.php";?>
     <?php require_once "Views/Shared/Footer1View.php";?>
-
 </body>
 </html>

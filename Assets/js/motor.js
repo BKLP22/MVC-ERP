@@ -58,18 +58,14 @@ window.addEventListener("load", function(){
     const botonconsulta1 = document.getElementById("botonConsulta1");
     const consulta1controller = "Controllers/lupaController.php";
     //para el resultado de la venta, creamos un div pequeño donde ira un a que enlace con la parte buscada
-    //const contenedor2 = document.getElementById("contenedor2");
-    let div = document.createElement("div");
-    div.classList.add("divresultado");
-    div.appendChild(formconsulta1);
-    
+    const contenedor2 = document.getElementById("contenedor2");
     // Asociacion del evento y llamada a la funcion cuando el boton exista
     if(formconsulta1)
     {
         formconsulta1.addEventListener("submit", function(event){
             //Con esta linea evitamos que html haga el parpadeo por defecto al hacer la llamada sincronizada, nosotros la queremos asincrona
             event.preventDefault();
-            seleccionarDatos1(formconsulta1, botonconsulta1, consulta1controller, div);
+            seleccionarDatos1(formconsulta1, botonconsulta1, consulta1controller, contenedor2);
         });
     }
     /*----------- FIN SUBMIT ----------*/ 
