@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
     text-align: center;
+   
 }
 
 img {
@@ -147,7 +148,8 @@ header {
 a {
     text-decoration: none;
     color: white;
-    cursor: pointer;;
+    cursor: pointer;
+    text-align: center;
 }
 .botonnav{
 
@@ -194,6 +196,7 @@ a {
     border-style: solid;
     width: 80%;
     border: none;
+    text-align: center;
 }
 
 textarea:focus,
@@ -300,6 +303,7 @@ footer div.col-10 {
     margin-bottom: 1.2%;
     border-color: black;
     cursor: pointer;
+    text-align: center;
     
 }
 
