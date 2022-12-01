@@ -19,18 +19,26 @@ if(empty($data))
 }else{
     echo"
     <div class='bloque0'>
-        <div class='bloque1'>Marca: </div>
-        <div class='bloque1'>Modelo: </div>
-        <div class='bloque1'>Autonomia en km: </div>
+    <div class='bloque1'>id_producto</div>
+    <div class='bloque1'>precio_unitario</div>
+    <div class='bloque1'>pvp</div>
+    <div class='bloque1'>modelo</div>
+    <div class='bloque1'>marca</div>
+    <div class='bloque1'>categoria</div>
+    <div class='bloque1'>stock</div>
     </div>
     ";
     foreach($data as $row)
     {
         echo"
         <div class='bloque0'>
-            <div class='bloque1'>$row->mar_coc</div>
-            <div class='bloque1'>$row->mod_coc</div>
-            <div class='bloque1'>$row->aut_coc</div>
+            <div class='bloque1'>$row->id_producto</div>
+            <div class='bloque1'>$row->precio_unitario</div>
+            <div class='bloque1'>$row->pvp</div>
+            <div class='bloque1'>$row->modelo</div>
+            <div class='bloque1'>$row->marca</div>
+            <div class='bloque1'>$row->categoria</div>
+            <div class='bloque1'>$row->stock</div>
         </div>
         "; 
     }

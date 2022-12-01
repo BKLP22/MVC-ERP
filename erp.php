@@ -9,6 +9,7 @@
     <script src="Assets/js/motor.js"></script>
 </head>
 <body>
-    <?php require_once "Views/registrarse/Registrarse1View.php";?>
+    <?php require_once "Views\Shared\Header2View.php";?>
+    <?php require_once "Views\ERP\Consulta1View.php";?>
 </body>
 </html>

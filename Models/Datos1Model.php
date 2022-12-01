@@ -8,7 +8,7 @@ class Datos
     //Conectar y crear una matriz
     public function __construct()
     {
-        $this->mysqli= Connection::conexion1();
+        $this->mysqli= Connection::conn1();
         $this->data=array();
     }
 
@@ -29,6 +29,4 @@ class Datos
     }
 
 }
-
-
 ?>

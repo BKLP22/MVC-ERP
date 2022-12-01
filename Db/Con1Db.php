@@ -10,7 +10,7 @@ class Connection
         }
         else
         {
-            $mysqli->set_charset('utf-8');
+            $mysqli->set_charset('utf8');
             return $mysqli;
         }
     }
