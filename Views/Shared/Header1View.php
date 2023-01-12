@@ -25,7 +25,7 @@
     </header> --> 
     <header class="flex">
         <div class="col-2">
-            <a href="" class="logo"><img src="Assets/img/icono.png" alt="icono"></a>
+            <a href="" class="s"><img src="Assets/img/icono.png" alt="icono"></a>
         </div>
         <div class="col-8 flex cosa">
             <a class="botonnav col-3" href="iniciarsesion.php">Inicio</a>
@@ -34,8 +34,8 @@
             <a class="botonnav col-3" href="">Registros</a>
         </div>
         <div class="col-2 flex">
-            <div class="col-7"> <a class="" href="registrarse.php"><img src="Assets/img/usuario.png" alt="registro"></a></div>
-           <div class="col-5"> <a class="" href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="iniciosesion"></a></div>
+            <div class="col-7"> <a class="s" href="registrarse.php"><img src="Assets/img/usuario.png" alt="registro"></a></div>
+           <div class="col-5"> <a class="s" href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="iniciosesion"></a></div>
            
         </div>
     </header>
