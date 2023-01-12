@@ -15,17 +15,14 @@ class Datos
     //devuelve datos de la base de datos
     public function getData1($sql)
     {
-        //Result es una matriz 
         $result = $this->mysqli->query($sql);
-        //fetch object coje como objeto todos los valores de el resultado y los pasa a un objeto, en este caso rows
         while($rows=$result->fetch_object())
         {
-            $this->data[] = $rows;
+            $this->data[]=$rows;
         }
         $result->close();
         $this->mysqli->close();
         return $this->data;
-
     }
 
 }

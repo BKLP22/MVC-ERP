@@ -1,16 +1,16 @@
-    <header class="flex">
+<header class="flex">
         <div class="col-2  center">
             <a class="erpa" href="#">ERP</a>
         </div>
         <div class="col-8 center">
             <div class="botones col-4">
-                <a href="iniciarsesion.php" class="enlaces ahover">Inicio</a>
+                <a href="erp.php" class="enlaces ahover">Inicio</a>
             </div>
            <div class="botones col-4">
-                <a href="registrarse.php" class="enlaces ahover">Nosotros</a>
+                <a href="productos.php" class="enlaces ahover">Productos</a>
            </div> 
            <div class="botones col-4">
-                <a href="erp.php" class="enlaces ahover">Contactos</a>
+                <a href="ventas.php" class="enlaces ahover">Ventas</a>
            </div> 
         </div>
         <!-- <form class="divlupa col-4" id="formConsulta1">

@@ -16,57 +16,80 @@ function deshabilitarControl1(control1)
     control1.disabled = true;
 }
 
-// INICIO AJAXPOST1, DEVUELVE EL RESULTADO A UN DIV
-function ajax1Post1(form1, controlador1, div1)
+/*INICIO - ajaxPost1 - Devuelve el resultadao a un div (POST) */
+function ajaxPost1(form1,controlador1,div1)
 {
-    //1 Creacion del objeto
-    let ajax1 = new XMLHttpRequest();
-    //2 enlace del formulario a un objeto formdata
-    const formdata1 = new FormData(form1);
-    //5 Exito en el envio
-    ajax1.addEventListener("load", function(event){
-        //en vez de establecer el id a mano se pone que la variable saque el atributo
+    // 1.- Creación del objeto XMLHttpRquest
+    const Ajax1 = new XMLHttpRequest();
+    // 2.- Enlace del formulario a un objeto FormData
+    const FormData1 = new FormData(form1);
+    // 5.- Éxito en el envío
+    Ajax1.addEventListener("load",function(event)
+    {
         document.getElementById(div1.id).innerHTML = this.responseText;
     });
-
-    ajax1.addEventListener("error", function(event){
-
-        alert("Error: No se ha enviado la información");
-
+    //5.- Error en el envio 
+    Ajax1.addEventListener("error",function(event)
+    {
+        alert("Error, no se ha enviado la información");
     });
-
-    //3 configuracion del formulario a traves de un formdata
-    ajax1.open("POST", controlador1 );
-    ajax1.send(formdata1); //Se acaba cliente empieza servidor
+    //3.- Configuración del envío del formulario atraves de un FromData
+    Ajax1.open("POST",controlador1);
+    //4.- Envio del formulario a tráves del FormData
+    Ajax1.send(FormData1);
 }
-//FIN AJAXPOST1
+/*FIN - ajaxPost1 - Devuelve el resultadao a un div (POST) */
 
-function seleccionarDatos1(form1, boton1, controlador1, div1)
+/*INICIO - ajaxGet1 - Devuelve el resultadao a un div (GET) */
+function ajaxGet1(controlador1,div1)
+{
+    const Ajax1 = new XMLHttpRequest();
+    Ajax1.onreadystatechange = function()
+    {
+        if(Ajax1.readyState==4&&Ajax1.status==200)
+        {
+            document.getElementById(div1.id).innerHTML=this.responseText;
+        }
+    };
+
+    Ajax1.open("GET",controlador1);
+    Ajax1.send();
+}
+/*FIN - ajaxGet1 - Devuelve el resultadao a un div (POST) */
+
+function seleccionarDatos1(form1,boton1,controlador1,div1)
 {
     deshabilitarControl1(boton1);
-    //Utilizaremos post porque el boton es submit
-    ajax1Post1(form1, controlador1, div1);
+    ajaxPost1(form1,controlador1,div1);
     habilitarControl1(boton1);
-    //reset limpia todos los campos de texto de un formulario
     form1.reset();
+}
+
+function seleccionarDatos2(controlador1,div1)
+{
+
+    ajaxGet1(controlador1,div1);
 }
 
 window.addEventListener("load", function(){
 
-    /*----------- INICIO SUBMIT ----------*/ 
-    const formconsulta1 = document.getElementById("formConsulta1");
-    const botonconsulta1 = document.getElementById("botonConsulta1");
-    const consulta1controller = "Controllers/lupaController.php";
-    //para el resultado de la venta, creamos un div pequeño donde ira un a que enlace con la parte buscada
-    const contenedor2 = document.getElementById("contenedor2");
-    // Asociacion del evento y llamada a la funcion cuando el boton exista
-    if(formconsulta1)
+    /*--------------INICIO-(submit) Seleccionar 1 ----------------------*/
+    //Paso 1:Obtener referencias
+    const formConsulta1 = this.document.getElementById("formConsulta1");
+    const botonConsulta1 = this.document.getElementById("botonConsulta1");
+    const Consulta1Controller = "Controllers/lupaController.php";
+    const contenedor2 = this.document.getElementById("contenedor2");
+    //Paso 2: Asociación del elemento al evento (submit) y llamada a la función
+    if(formConsulta1)
     {
-        formconsulta1.addEventListener("submit", function(event){
-            //Con esta linea evitamos que html haga el parpadeo por defecto al hacer la llamada sincronizada, nosotros la queremos asincrona
+        formConsulta1.addEventListener("submit",function(event)
+        {
             event.preventDefault();
-            seleccionarDatos1(formconsulta1, botonconsulta1, consulta1controller, contenedor2);
+            seleccionarDatos1(formConsulta1,botonConsulta1,Consulta1Controller,contenedor2);
         });
     }
-    /*----------- FIN SUBMIT ----------*/ 
+    const Consulta2Controller = "Controllers/todosProductos.php";
+    const contenedor02 = this.document.getElementById("contenedor2");
+    seleccionarDatos2(Consulta2Controller,contenedor02);
+
 });

@@ -101,16 +101,23 @@ ALTER TABLE productos ADD CONSTRAINT fk_produtos_escandallo FOREIGN KEY (id_prod
 
 ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idcompra FOREIGN KEY (id_compra) REFERENCES compras(id_compra);
 
+ALTER TABLE clientes ADD CONSTRAINT fk_cppoblaciones_cpclientes FOREIGN KEY (cp) REFERENCES poblaciones(cp);
+ALTER TABLE proveedores ADD CONSTRAINT fk_cppoblaciones_cpproveedores FOREIGN KEY (cp) REFERENCES poblaciones(cp);
+
+
 
 -- inserts
 
 insert into proveedores values(NULL,"Casaca SL", 28007, "Madrid", "casaca@gmail.com", 733456211, "ES7921000813610123456789");
 insert into compras values (NULL,1, 2022-11-22, 1040, 8.30);
 insert into factura_compra values (1, 0001, 100, 10.4,  1048.3);
+insert into factura_compra values (1, 0002, 100, 20.8,  2080.0);
+
 
 insert into productos values 
 (0001,10.4,  13.2, "EX12", "SUPERMARCA", "Limpieza", "Producto altamente eficaz para quitar manchas", 98 ),
-(0002,5.50,10.50,NULL,NULL,"Produccion","Mano de obra",1000000,0);
+(0002,20.8,  30.50, "EX15", "SUPERMARCA", "Limpieza", "Producto para limpiar madera", 100,0 ),
+(1000,5.50,10.50,NULL,NULL,"Produccion","Mano de obra",1000000,0);
 
 
 insert into clientes values ("35678788C", "Steven", "Piedra", "steven@gmail.com", "Madrid", 28037, "ES7921000813610723462213","629749431");

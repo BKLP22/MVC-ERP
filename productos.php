@@ -10,5 +10,6 @@
 </head>
 <body>
     <?php require_once "Views\Shared\Header3View.php";?>
+    <?php require_once "Views\ERP\Consulta1View.php";?>
 </body>
 </html>
