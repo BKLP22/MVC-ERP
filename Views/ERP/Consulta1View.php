@@ -7,5 +7,7 @@
 
         </form>
     </div>
-    <div class="contenedor2" id="contenedor2"></div>
+    <div class="contenedor2" id="contenedor2">
+        <?php require_once "Controllers/ProductosController1.php"; ?>
+    </div>
 </div>
