@@ -34,8 +34,8 @@
             <a class="botonnav col-3" href="">Registros</a>
         </div>
         <div class="col-2 flex">
-            <div class="col-7"> <a class="s" href="registrarse.php"><img src="Assets/img/usuario.png" alt="registro"></a></div>
-           <div class="col-5"> <a class="s" href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="iniciosesion"></a></div>
+            <div class="col-7 "> <a class="s1" href="registrarse.php"><img src="Assets/img/usuario.png" alt="registro" ></a></div>
+           <div class="col-5 "> <a class="s1" href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="iniciosesion"></a></div>
            
         </div>
     </header>

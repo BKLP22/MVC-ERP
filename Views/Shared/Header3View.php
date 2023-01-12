@@ -1,26 +1,26 @@
 <header class="flex">
         <div class="col-2  center">
-            <a class="erpa" href="#">ERP</a>
+            <a class="erpa s" href="#"><img src="Assets/img/icono.png" alt=""></a>
         </div>
         <div class="col-8 center">
-            <div class="botones col-2">
-                <a href="erp.php" class="enlaces ahover">Inicio</a>
-            </div>
-           <div class="botones col-2">
-                <a href="productos.php" class="enlaces ahover">Productos</a>
-           </div> 
-           <div class="botones col-2">
-                <a href="ventas.php" class="enlaces ahover">Ventas</a>
-           </div> 
-           <div class="botones col-2">
-                <a href="ventas.php" class="enlaces ahover">Compras</a>
-           </div> 
-           <div class="botones col-2">
-                <a href="clientes.php" class="enlaces ahover">Clientes</a>
-           </div> 
-           <div class="botones col-2">
-                <a href="ventas.php" class="enlaces ahover">Proveedores</a>
-           </div> 
+            
+                <a href="erp.php" class=" botonnav col-2 ahover">Inicio</a>
+            
+           
+                <a href="productos.php" class=" botonnav col-2 ahover">Productos</a>
+           
+           
+                <a href="ventas.php" class=" botonnav col-2 ahover">Ventas</a>
+          
+          
+                <a href="ventas.php" class=" botonnav col-2 ahover">Compras</a>
+           
+         
+                <a href="clientes.php" class=" botonnav col-2 ahover">Clientes</a>
+          
+          
+                <a href="ventas.php" class=" botonnav col-2 ahover">Proveedores</a>
+           
         </div>
         <!-- <form class="divlupa col-4" id="formConsulta1">
             
@@ -28,7 +28,7 @@
                 <input type="image" value=""  src="Assets/img/lupa.png" id="botonConsulta1" class="buscar"></input>
                 </div>
         </form> -->
-        <div class="col-2" id="usuario">
-            <a href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="" class="erp"></a>
+        <div class="col-2 " id="usuario">
+            <a href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="" class="erp s"></a>
         </div>
     </header>
