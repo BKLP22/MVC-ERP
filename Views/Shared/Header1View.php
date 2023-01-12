@@ -25,7 +25,7 @@
     </header> --> 
     <header class="flex">
         <div class="col-2">
-            <a href=""><img src="Assets/img/icono.png" alt="icono"></a>
+            <a href="" class="logo"><img src="Assets/img/icono.png" alt="icono"></a>
         </div>
         <div class="col-8 flex cosa">
             <a class="botonnav col-3" href="iniciarsesion.php">Inicio</a>

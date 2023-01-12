@@ -127,6 +127,17 @@ img {
   padding: 2%;
   cursor: pointer;
 }
+main{
+    width: 80%;
+    margin: 2% 8%;
+}
+.in{
+    margin-bottom: 2%;
+    padding: 2%;
+    border-style: solid;
+    border-color: #0000005a;
+    
+}
 
 
 .center {
@@ -324,14 +335,19 @@ footer div.col-10 {
 /*Clase para pagina principal*/
 
 .imagenes_principal{
-    height: 60vh;
+    height: 50vh;
     max-height: 100%;
+}
+.imagenes_principal:hover{
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    
 }
 
 .parrafos{
     margin: 1% 0;
-    padding: 1%;
-    color: #333333;
+    padding: 2%;
+    color: #333333ca;
+    
 }
 
 .titulos{
@@ -341,11 +357,15 @@ footer div.col-10 {
 
 .textos{
     font-size: 1.5em;
+    text-align:start;
 }
 
 
 .descubrir{
     font-size: 1.2em;
+}
+.logo:hover{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .botondescubrir{
     text-align: center;
@@ -356,6 +376,9 @@ footer div.col-10 {
     text-decoration: none;
     border-color: black;
     cursor: pointer;
+}
+.botondescubrir:hover{
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
 /*Clases para el div donde se vuelcan resultados*/
