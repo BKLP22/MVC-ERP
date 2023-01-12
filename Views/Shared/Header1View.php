@@ -10,7 +10,7 @@
                 <a href="registrarse.php" class="enlaces ahover">Nosotros</a>
            </div> 
            <div class="botones col-4">
-                <a href="#" class="enlaces ahover">Contactos</a>
+                <a href="erp.php" class="enlaces ahover">Contactos</a>
            </div> 
         </div>
         <form class="divlupa col-4" id="formConsulta1">
