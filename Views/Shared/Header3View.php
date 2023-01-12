@@ -3,14 +3,23 @@
             <a class="erpa" href="#">ERP</a>
         </div>
         <div class="col-8 center">
-            <div class="botones col-4">
+            <div class="botones col-2">
                 <a href="erp.php" class="enlaces ahover">Inicio</a>
             </div>
-           <div class="botones col-4">
+           <div class="botones col-2">
                 <a href="productos.php" class="enlaces ahover">Productos</a>
            </div> 
-           <div class="botones col-4">
+           <div class="botones col-2">
                 <a href="ventas.php" class="enlaces ahover">Ventas</a>
+           </div> 
+           <div class="botones col-2">
+                <a href="ventas.php" class="enlaces ahover">Compras</a>
+           </div> 
+           <div class="botones col-2">
+                <a href="clientes.php" class="enlaces ahover">Clientes</a>
+           </div> 
+           <div class="botones col-2">
+                <a href="ventas.php" class="enlaces ahover">Proveedores</a>
            </div> 
         </div>
         <!-- <form class="divlupa col-4" id="formConsulta1">

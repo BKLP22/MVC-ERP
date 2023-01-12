@@ -77,7 +77,7 @@ window.addEventListener("load", function(){
     //Paso 1:Obtener referencias
     const formConsulta1 = this.document.getElementById("formConsulta1");
     const botonConsulta1 = this.document.getElementById("botonConsulta1");
-    const Consulta1Controller = "Controllers/lupaController.php";
+    const Consulta1Controller = "Controllers/ProductosController2.php";
     const contenedor2 = this.document.getElementById("contenedor2");
     //Paso 2: Asociación del elemento al evento (submit) y llamada a la función
     if(formConsulta1)
@@ -88,8 +88,28 @@ window.addEventListener("load", function(){
             seleccionarDatos1(formConsulta1,botonConsulta1,Consulta1Controller,contenedor2);
         });
     }
-    const Consulta2Controller = "Controllers/todosProductos.php";
-    const contenedor02 = this.document.getElementById("contenedor2");
-    seleccionarDatos2(Consulta2Controller,contenedor02);
+    const formConsulta01 = this.document.getElementById("formConsultaClientes1");
+    const botonConsulta01 = this.document.getElementById("botonConsultaClientes1");
+    const Consulta01Controller = "Controllers/ClientesController2.php";
+    if(formConsulta01)
+    {
+        formConsulta01.addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            seleccionarDatos1(formConsulta01,botonConsulta01,Consulta01Controller,contenedor2);
+        });
+    }
+
+    const formConsulta001 = this.document.getElementById("formConsultaVentas1");
+    const botonConsulta001 = this.document.getElementById("botonConsultaVentas1");
+    const Consulta001Controller = "Controllers/VentasController2.php";
+    if(formConsulta001)
+    {
+        formConsulta01.addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            seleccionarDatos1(formConsulta001,botonConsulta001,Consulta001Controller,contenedor2);
+        });
+    }
 
 });

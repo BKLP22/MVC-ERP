@@ -9,7 +9,7 @@
     <script src="Assets/js/motor.js"></script>
 </head>
 <body>
-    <?php require_once "Views\Shared\Header3View.php";?>
-    <?php require_once "Views\Ventas\Ventas1View.php"; ?>
+    <?php require_once "Views/Shared/Header3View.php";?>
+    <?php require_once "Views/Clientes/Clientes1View.php";?>
 </body>
 </html>
