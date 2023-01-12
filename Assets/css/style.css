@@ -4,6 +4,8 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
+    text-align: center;
+   
 }
 
 img {
@@ -135,15 +137,37 @@ img {
 }
 
 header {
-    background-color: #0e406e;
-    align-items: center;
-    height: 80px;
-    position: sticky;
-    top: 0;
-    box-shadow: 0 0.5px 5px 0px #d4d4d4;
-    border-color: #333333;
-    box-shadow: inset;
+    background-color: rgb(49, 81, 97);
+    padding: 1%;
 }
+.cosa{
+    align-items: center;
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+.botonnav{
+
+    background-color: rgb(49, 81, 97);
+    padding: 1%;
+    text-align: center;
+}
+.botonnav:hover{
+ cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 2px  5px 15px rgba(55, 55, 55, 0.429);
+  text-align: center;
+ 
+  color: rgb(239, 218, 184);
+  
+  
+}
+
 
 .enlaces{
     color: white;
@@ -172,6 +196,7 @@ header {
     border-style: solid;
     width: 80%;
     border: none;
+    text-align: center;
 }
 
 textarea:focus,
@@ -203,7 +228,7 @@ input:focus {
 }
 
 footer {
-    background-color: #0e406e;
+    background-color:  rgb(49, 81, 97);
    
 }
 
@@ -233,7 +258,7 @@ footer div.col-10 {
 }
 
 .cajaAzul {
-    background-color: #1866AD;
+    background-color: rgb(49, 81, 97);
     border-radius: 12px;
     margin: auto;
     width: 50%;
@@ -268,14 +293,17 @@ footer div.col-10 {
 }
 
 .botonLR {
-    background-color: #00A3FF;
+    background-color: rgb(239, 218, 184);
     border-radius: 5px;
     padding: 1%;
-    background-color: #00A3FF;
+    /* background-color: #00A3FF; */
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-top: 0%;
     margin-bottom: 1.2%;
+    border-color: black;
+    cursor: pointer;
+    text-align: center;
     
 }
 
@@ -322,10 +350,12 @@ footer div.col-10 {
 .botondescubrir{
     text-align: center;
     border-radius: 14px;
-    background-color: #00A3FF;
-    color:white ;
+    background-color:  rgb(239, 218, 184);
+    color:rgb(0, 0, 0) ;
     padding: 8px 16px;
     text-decoration: none;
+    border-color: black;
+    cursor: pointer;
 }
 
 /*Clases para el div donde se vuelcan resultados*/
