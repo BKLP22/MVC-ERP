@@ -50,6 +50,7 @@ if(empty($data))
             <div class='bloque1'>$row->marca</div>
             <div class='bloque1'>$row->categoria</div>
             <div class='bloque1'>$row->stock</div>
+     
         </div>
         "; 
     }

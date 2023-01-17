@@ -1,6 +1,6 @@
 <header class="flex">
         <div class="col-2  center">
-            <a class="erpa s" href="#"><img src="Assets/img/icono.png" alt=""></a>
+            <a class="erpa " href="#"><img src="Assets/img/icono.png" alt=""></a>
         </div>
         <div class="col-8 center">
             
@@ -29,6 +29,6 @@
                 </div>
         </form> -->
         <div class="col-2 " id="usuario">
-            <a href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="" class="erp s"></a>
+            <a href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="" class="erp "></a>
         </div>
     </header>
