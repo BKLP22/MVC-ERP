@@ -4,22 +4,22 @@
         </div>
         <div class="col-8 center">
             
-                <a href="erp.php" class=" botonnav col-2 ahover">Inicio</a>
+                <a href="erp.php" class=" botonnav col-2">Inicio</a>
             
            
-                <a href="productos.php" class=" botonnav col-2 ahover">Productos</a>
+                <a href="productos.php" class=" botonnav col-2 ">Productos</a>
            
            
-                <a href="ventas.php" class=" botonnav col-2 ahover">Ventas</a>
+                <a href="ventas.php" class=" botonnav col-2">Ventas</a>
           
           
-                <a href="ventas.php" class=" botonnav col-2 ahover">Compras</a>
+                <a href="ventas.php" class=" botonnav col-2">Compras</a>
            
          
-                <a href="clientes.php" class=" botonnav col-2 ahover">Clientes</a>
+                <a href="clientes.php" class=" botonnav col-2">Clientes</a>
           
           
-                <a href="ventas.php" class=" botonnav col-2 ahover">Proveedores</a>
+                <a href="ventas.php" class=" botonnav col-2">Proveedores</a>
            
         </div>
         <!-- <form class="divlupa col-4" id="formConsulta1">
