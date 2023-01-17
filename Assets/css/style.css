@@ -156,7 +156,7 @@ header {
 
 }
 
-a {
+header a {
     text-decoration: none;
     color: white;
     cursor: pointer;
@@ -187,6 +187,18 @@ a {
     padding: 5%;
     border-radius: 4px;
     width: 100%;
+}
+
+.enlaces2{
+    box-shadow: 0px 1px 2px 0px #0000005a;
+    color: black;
+    font-size: large;
+    text-decoration: none;
+    padding: 3%;
+    border-radius: 4px;
+    width: 100%;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 
 
@@ -450,4 +462,6 @@ select {
     border: 1px solid #00A3FF;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 1% 2%;
+    border-radius: 30px;
 }
