@@ -37,6 +37,7 @@ if(empty($data))
     <div class='bloque1'><h1 class='border'>Fecha compra Cliente</h1></div>
     <div class='bloque1'><h1 class='border'>Precio</h1></div>
     <div class='bloque1'><h1 class='border'>Coste logistico envio</h1></div>
+    <div class='bloque1'><h1 class='border'>Detalles</h1></div>
     </div>
     ";
     foreach($data as $row)
@@ -48,6 +49,7 @@ if(empty($data))
             <div class='bloque1'>$row->fecha_compra</div>
             <div class='bloque1'>$row->precio</div>
             <div class='bloque1'>$row->coste_logistico</div>
+            <div class='bloque1'><a href='detalles_compra.php?idCompra=$row->id_compra' class='enlaces2'>Detalles</a></div>
         "; 
     }
 }
