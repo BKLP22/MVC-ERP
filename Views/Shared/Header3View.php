@@ -13,13 +13,13 @@
                 <a href="ventas.php" class=" botonnav col-2 ahover">Ventas</a>
           
           
-                <a href="ventas.php" class=" botonnav col-2 ahover">Compras</a>
+                <a href="compras.php" class=" botonnav col-2 ahover">Compras</a>
            
          
                 <a href="clientes.php" class=" botonnav col-2 ahover">Clientes</a>
           
           
-                <a href="ventas.php" class=" botonnav col-2 ahover">Proveedores</a>
+                <a href="proveedores.php" class=" botonnav col-2 ahover">Proveedores</a>
            
         </div>
         <!-- <form class="divlupa col-4" id="formConsulta1">
