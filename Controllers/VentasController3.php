@@ -1,5 +1,7 @@
 <?php
 
+$idPedido = $_GET['idPedido'];
+
 if(file_exists("../Db/Con1Db.php"))
 {
     // Llamada a la conexion
@@ -17,7 +19,7 @@ elseif(file_exists("Db/Con1Db.php"))
 
 $objData = new Datos;
 
-$buscaproducto = "select * from envio";
+$buscaproducto = "select * from factura_venta where id_pedido=$idPedido";
 $data = $objData->getData1($buscaproducto);
 
 if(empty($data))
@@ -30,24 +32,27 @@ if(empty($data))
 }else{
     echo"
     <div class='bloque0'>
-    <div class='bloque1'><h1 class='border'>NºPedido</h1></div>
+        <div class='bloque1'>
+            <h1>Detalles del pedido $idPedido</h1>
+        </div>
+    </div>
+
+    <div class='bloque0'>
+    <div class='bloque1'><h1 class='border'>ID Producto</h1></div>
+    <div class='bloque1'><h1 class='border'>Cantidad</h1></div>
+    <div class='bloque1'><h1 class='border'>Precio unitario</h1></div>
     <div class='bloque1'><h1 class='border'>Total</h1></div>
-    <div class='bloque1'><h1 class='border'>DNI Cliente</h1></div>
-    <div class='bloque1'><h1 class='border'>Fecha venta</h1></div>
-    <div class='bloque1'><h1 class='border'>Fecha envio</h1></div>
-    <div class='bloque1'><h1 class='border'>Direccion</h1></div>
     </div>
     ";
     foreach($data as $row)
     {
         echo"
         <div class='bloque0'>
-            <div class='bloque1'>$row->id_pedido</div>
+            <div class='bloque1'>$row->id_producto</div>
+            <div class='bloque1'>$row->cantidad</div>
+            <div class='bloque1'>$row->pvp_unitario</div>
             <div class='bloque1'>$row->total</div>
-            <div class='bloque1'>$row->dni_cliente</div>
-            <div class='bloque1'>$row->fecha_venta</div>
-            <div class='bloque1'>$row->fecha_envio</div>
-            <div class='bloque1'>$row->direccion</div>
+        </div>
         "; 
     }
 }
