@@ -13,7 +13,7 @@
                 <a href="ventas.php" class=" botonnav col-2 ahover">Ventas</a>
           
           
-                <a href="ventas.php" class=" botonnav col-2 ahover">Compras</a>
+                <a href="compras.php" class=" botonnav col-2 ahover">Compras</a>
            
          
                 <a href="clientes.php" class=" botonnav col-2 ahover">Clientes</a>
