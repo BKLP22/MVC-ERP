@@ -37,6 +37,8 @@ if(empty($data))
     <div class='bloque1'><h1 class='border'>Marca</h1></div>
     <div class='bloque1'><h1 class='border'>Categoria</h1></div>
     <div class='bloque1'><h1 class='border'>Stock</h1></div>
+    <div class='bloque1'><h1 class='border'></h1></div>
+
     </div>
     ";
     foreach($data as $row)
@@ -50,7 +52,9 @@ if(empty($data))
             <div class='bloque1'>$row->marca</div>
             <div class='bloque1'>$row->categoria</div>
             <div class='bloque1'>$row->stock</div>
-        </div>
+            <div class='bloque1'><a href='detalles_venta.php?idPedido=$row->id_producto' class='enlaces2'>Detalles</a></div>
+
+            </div>
         "; 
     }
 }

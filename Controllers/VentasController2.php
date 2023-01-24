@@ -1,4 +1,5 @@
 <?php
+//Saca los detales de la venta seleccionada
 
 $textConsulta1 = empty($_POST['textConsultaVentas1']) ? '' : $_POST['textConsultaVentas1'];
 

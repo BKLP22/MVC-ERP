@@ -34,6 +34,9 @@ if(empty($data))
     <div class='bloque0'>
         <div class='bloque1'>
             <h1>Detalles del pedido $idPedido</h1>
+            <form id='formFacturaVenta2' class='bloque1'>
+                <input type='hidden' id='idPedidoFacturaVenta' value='$idPedido'>
+            </form>
         </div>
     </div>
 

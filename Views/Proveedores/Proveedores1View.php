@@ -6,7 +6,6 @@
             <input type="button" name="botonConsultaProveedores2" id="botonConsultaProveedores2" class="boton1" value="Ver todo">
            
         </form>
-        <div class="col-4" ><input type="button" name="botonEditarProveedores2" id="botonEditarProveedores2" class="editar" value="Editar"></div>
         
     </div>
 
