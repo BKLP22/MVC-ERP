@@ -23,21 +23,23 @@
             <a href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="" class="erp"></a>
         </div>
     </header> --> 
-    <header class="flex">
+    <header class="flex sti">
         <div class="col-2">
             <a href="" class="s"><img src="Assets/img/icono.png" alt="icono"></a>
         </div>
         <div class="col-8 flex cosa">
-            <a class="botonnav col-3" href="iniciarsesion.php">Inicio</a>
-            <a class="botonnav col-3" href="registrarse.php">Nosotros</a>
-            <a class="botonnav col-3" href="">Inserciones</a>
-            <a class="botonnav col-3" href="">Registros</a>
-        </div>
-        <div class="col-2 flex">
-            <div class="col-7 "> <a class="s1" href="registrarse.php"><img src="Assets/img/usuario.png" alt="registro" ></a></div>
-           <div class="col-5 "> <a class="s1" href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="iniciosesion"></a></div>
+            <a class="botonnav col-6" href="index.php">Inicio</a>
+            <a class="botonnav col-6" href="#nosotros">Nosotros</a>
            
         </div>
+        <div class="col-2 flex cosa">
+            <a class="col-5" href="iniciarsesion.php"><img class="s1" src="Assets/img/usuario.png" alt="iniciosesion"></a>
+            <a class="col-7" href="registrarse.php"><img class="s1" src="Assets/img/registro.png" alt="registro" ></a>
+        </div>
+        
+    
+    
+    
     </header>
     
     

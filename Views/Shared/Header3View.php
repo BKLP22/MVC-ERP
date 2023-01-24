@@ -28,7 +28,7 @@
                 <input type="image" value=""  src="Assets/img/lupa.png" id="botonConsulta1" class="buscar"></input>
                 </div>
         </form> -->
-        <div class="col-2 " id="usuario">
-            <a href="iniciarsesion.php"><img src="Assets/img/usuario.png" alt="" class="erp "></a>
+        <div class="col-2 center" id="usuario">
+        <a href="iniciarsesion.php"><img class="s1" src="Assets/img/usuario.png" alt="iniciosesion"></a>
         </div>
     </header>
