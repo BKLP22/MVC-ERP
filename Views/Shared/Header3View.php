@@ -2,7 +2,7 @@
         <div class="col-2  center">
             <a class="erpa " href="#"><img src="Assets/img/icono.png" alt=""></a>
         </div>
-        <div class="col-8 center">
+        <div class="col-8  center">
             
                 <a href="erp.php" class=" botonnav col-2 ahover">Inicio</a>
             
