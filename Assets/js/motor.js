@@ -40,6 +40,34 @@ function ajaxPost1(form1,controlador1,div1)
 }
 /*FIN - ajaxPost1 - Devuelve el resultadao a un div (POST) */
 
+/*INICIO - ajaxPost2 - Devuelve el resultadao a un div (POST) */
+function ajaxPost2(form1,controlador1,div1,form2)
+{
+    // 1.- Creación del objeto XMLHttpRquest
+    const Ajax1 = new XMLHttpRequest();
+    // 2.- Enlace del formulario a un objeto FormData
+    const FormData1 = new FormData(form1);
+    const FormData2 = new FormData(form2);
+
+    FormData1.
+
+    // 5.- Éxito en el envío
+    Ajax1.addEventListener("load",function(event)
+    {
+        document.getElementById(div1.id).innerHTML = this.responseText;
+    });
+    //5.- Error en el envio 
+    Ajax1.addEventListener("error",function(event)
+    {
+        alert("Error, no se ha enviado la información");
+    });
+    //3.- Configuración del envío del formulario atraves de un FromData
+    Ajax1.open("POST",controlador1);
+    //4.- Envio del formulario a tráves del FormData
+    Ajax1.send(FormData1,FormData2);
+}
+/*FIN - ajaxPost2 - Devuelve el resultadao a un div (POST) */
+
 /*INICIO - ajaxGet1 - Devuelve el resultadao a un div (GET) */
 function ajaxGet1(controlador1,div1)
 {
@@ -73,6 +101,14 @@ function seleccionarDatos2(form1, boton1, controlador1, div1)
   form1.reset();
 }
 
+function subconsultaDetalles(form1, boton1, controlador1, div1, form2)
+{
+  deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
+  ajaxPost2(form1,controlador1,div1,form2);
+  habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
+  form1.reset();
+}
+
 function insertarDatos1(form1, boton1, controlador1, div1)
 {      
   deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
@@ -89,6 +125,7 @@ window.addEventListener("load", function()
     let boton1;
     let controlador1;
     let controlador2;
+    let idDetalles;
     let div1;
     let div2;
 
@@ -142,6 +179,7 @@ window.addEventListener("load", function()
         });
     }
     //Eventos de busqueda y ver todos de Ventas
+
     const formConsulta001 = this.document.getElementById("formConsultaVentas1");
     if(formConsulta001)
     {
@@ -161,6 +199,31 @@ window.addEventListener("load", function()
         {
             event.preventDefault();
             seleccionarDatos2(formConsulta001,botonConsulta002,controlador2,contenedor2);
+        });
+    }
+
+    //Eventos de bsuqueda y ver todos de Factura ventas(Detalles del pedido)
+
+    const formConsulta000001 = this.document.getElementById("formFacturaVenta1");
+    const formConsulta000002 = this.document.getElementById("formFacturaVenta2");
+    if(formConsulta000001)
+    {
+        boton1=this.document.getElementById("botonFacturaVenta1");
+        controlador1="Controllers/FacturaVentaController2.php";
+        formConsulta000001.addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            subconsultaDetalles(formConsulta000001,boton1,controlador1,contenedor2,formConsulta000002);
+        });
+    }
+    const botonConsulta000002 = document.getElementById("botonFacturaVenta2");
+    if(botonConsulta000002)
+    {
+        controlador2="Controllers/FacturaVentaController1.php";
+        botonConsulta000002.addEventListener("click", function(event)
+        {
+            event.preventDefault();
+            seleccionarDatos2(formConsulta001,botonConsulta000002,controlador2,contenedor2);
         });
     }
 
