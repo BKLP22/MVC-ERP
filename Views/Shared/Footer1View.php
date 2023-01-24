@@ -10,9 +10,6 @@
         <div class="col-5 bordefooter"></div>
     </div>
     <div class="col-12 center pb">
-        <h2>ERP</h2>
-    </div>
-    <div class="col-12 center pb">
         <p>Copyright@ 2022 ERP</p>
     </div>
     <div class="center">

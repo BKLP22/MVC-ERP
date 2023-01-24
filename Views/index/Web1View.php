@@ -1,3 +1,4 @@
+
 <main>
     <section class="inicio ">
         <section class="col-12 flex in">
@@ -23,6 +24,7 @@
         </section>
 
         <section class="col-12 flex in">
+            
             <div class="col-6">
                 <div class="parrafos">
                     <h1 class="titulos">IMPULSA LA INNOVACION DE TU NEGOCIO</h1>
@@ -42,5 +44,5 @@
             </div>
         </section> 
     </section>
-</main>
+
 

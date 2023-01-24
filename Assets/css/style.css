@@ -154,7 +154,7 @@ main{
 
 header {
     background-color: #3FBF6D;
-    padding: 0.4%;
+    padding: 0.2%;
     color: #000000;
 }
 .cosa{
@@ -260,7 +260,7 @@ input:focus {
 }
 
 footer {
-    background-color:  rgb(49, 81, 97);
+    background-color:  #3FBF6D;
    
 }
 
@@ -389,7 +389,7 @@ footer div.col-10 {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .s1:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 .botondescubrir{
     text-align: center;
@@ -426,6 +426,7 @@ footer div.col-10 {
     
 }
 
+
 .border{
     border-bottom: 1px solid black;
     padding: 1% 0;
@@ -445,6 +446,11 @@ h1.border{
 }
 .inicio{
    margin: 0% 0.2%;
+}
+.sti{
+    position: sticky;
+    top: 0;
+    width: 100%;
 }
 
 
@@ -476,7 +482,6 @@ select {
     border-radius: 30px;
 }
 .editar{
-    background-color:#3f91bf;
+    background-color:#6E9767;
     color: #ffffff;
-    padding: 2% 4%;
 }
