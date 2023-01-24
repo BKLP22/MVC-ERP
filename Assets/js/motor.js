@@ -1,17 +1,17 @@
-function habilitarControl1(control1)
+function habilitarControl1(control1, claseaquitar, claseaponer)
 {
     //cambiar estetica
-    control1.classList.remove("boton1Inhabilitado");
-    control1.classList.add("boton1");
+    control1.classList.remove(claseaquitar);
+    control1.classList.add(claseaponer);
     //habilitar funcionalidad
     control1.disabled = false;
 }
 
-function deshabilitarControl1(control1)
+function deshabilitarControl1(control1, claseaquitar,claseaponer)
 {
     //cambiar estetica
-    control1.classList.remove("boton1");
-    control1.classList.add("boton1Inhabilitado");
+    control1.classList.remove(claseaquitar);
+    control1.classList.add(claseaponer);
     //desabilitar funcionalidad
     control1.disabled = true;
 }
@@ -59,28 +59,28 @@ function ajaxGet1(controlador1,div1)
 
 function seleccionarDatos1(form1,boton1,controlador1,div1)
 {
-    deshabilitarControl1(boton1);
+    deshabilitarControl1(boton1,"boton1", "boton1Inhabilitado");
     ajaxPost1(form1,controlador1,div1);
-    habilitarControl1(boton1);
+    habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
     form1.reset();
 }
 
 function seleccionarDatos2(form1, boton1, controlador1, div1)
 {
-  deshabilitarControl1(boton1);
+  deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
   ajaxGet1(controlador1, div1);
-  habilitarControl1(boton1);
+  habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
   form1.reset();
 }
 
 function insertarDatos1(form1, boton1, controlador1, div1)
 {      
-  deshabilitarControl1(boton1);
+  deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
   // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
   ajaxPost1(form1,controlador1,div1);
   // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
   // ajaxPost2(form1,controlador1,div1);
-  habilitarControl1(boton1);
+  habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
   form1.reset();
 }
 
