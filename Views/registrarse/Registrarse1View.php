@@ -3,7 +3,7 @@
             <div class="cajaAzul">
                 <div class="pt-2">
                     <h1><a href="index.php" class="enlaceERP">ERP</a></h1>
-                    <h4 class="pt frasesregistros">Tu eres la empresa</h4>
+                    <h4 class="pt frasesregistros">Registro Usuario</h4>
                 </div>
                 <div>
                     <form action="" class="form1">
@@ -14,7 +14,7 @@
                         <div class="textaling-r frasesregistros"><input type="checkbox" name="" id=""> <p class="pl">He leido y acepto las condiciones</p></div>
     
     
-                <div><input type="button" value="Crear Usuario" class="botonLR input-log" id="register"></div>
+                <div><input type="button" value="Crear Usuario" class="botondescubrir input-log" id="register"></div>
             </div>
         </section>
     </form>
