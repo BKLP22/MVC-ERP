@@ -83,6 +83,46 @@ function ajaxGet1(controlador1,div1)
     Ajax1.open("GET",controlador1);
     Ajax1.send();
 }
+
+
+
+
+function  ajaxPostLogin1(form1,r1,control1)
+{
+     //1- Creacion del objeto del XMLHTprequest
+     const Ajax1 = new XMLHttpRequest();
+     //2- Enlace Formulario  del formulario a un objeto (FormDAta1)
+     const FormDAta1 = new FormData(form1);
+     //5.- Exito en el envio 
+     Ajax1.addEventListener("load", function(event)
+     {
+         //recivir respuestas del servidor
+         //target es para pillar la respuesta en el Controlador 
+         
+         let respuesta1 = event.target.responseText;
+         console.log(respuesta1);
+         if(respuesta1==1 )
+         {
+             window.location.assign("erp.php");
+         }  else if(respuesta1==0 )
+         {
+             r1.innerHTML="Usuario o clave incorrecta"
+         }else{
+             r1.innerHTML="No se ha podido realizar la autenticacion";
+         }
+         
+     });
+         //5.- Error en el envio 
+         window.addEventListener("error", function(event)
+         {
+ 
+             div1.innerHTML="Error no se ha enviado la informacion";
+         });
+ 
+         //3.- Configuracion del envio del formulario a traves del FormData
+         Ajax1.open("POST",control1);
+         Ajax1.send(FormDAta1);
+};
 /*FIN - ajaxGet1 - Devuelve el resultadao a un div (POST) */
 
 function seleccionarDatos1(form1,boton1,controlador1,div1)
@@ -119,6 +159,25 @@ function insertarDatos1(form1, boton1, controlador1, div1)
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
   form1.reset();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+function autent1(form1,boton1,r1,control1){
+    deshabilitarControl1(boton1);
+    ajaxPostLogin1(form1,r1,control1);
+    habilitarControl1(boton1);
+    form1.reset();
+
+};
 
 window.addEventListener("load", function()
 {
@@ -289,4 +348,67 @@ window.addEventListener("load", function()
         insertarDatos1(formInsercionProducto1,boton1,controlador1,contenedor2);
       });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //-----Login---
+    const loginForm = document.getElementById("loginForm");
+    if(loginForm){
+       const btnLogin = document.getElementById("login");
+       const r1 = document.getElementById("r1");
+       const controlador1 = document.getElementById("Controllers/LoginController1.php");
+        loginForm.addEventListener("submit",function(event){
+            event.preventDefault();
+            autent1(loginForm,btnLogin,r1,controlador1);
+
+        });
+    }
+
 });

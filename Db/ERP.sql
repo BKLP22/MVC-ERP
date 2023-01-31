@@ -125,7 +125,14 @@ insert into factura_venta values (1, 0001, 2, 13.2, 26.4);
 
 insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22, 2022-11-23, "Calle Cortada n34 7A" );
 
+create table if not exists usuarios (
+    ide_usu int not null auto_increment primary key,
+    nom_usu varchar(10) character set utf8 default null,
+    com_usu varchar(10) character set utf8 default null,
+    unique(nom_usu)
+)engine=innoDB default charset=utf8 auto_increment=1;
 
+insert into usuarios (nom_usu, com_usu) values ("usu1", "con1");
 
 
 
