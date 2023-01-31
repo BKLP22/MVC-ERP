@@ -1,6 +1,6 @@
 <?php
 
-$idPedido = $_GET['idPedido'];
+$textConsulta2 = empty($_POST['idDetalles']) ? '' : $_POST['idDetalles'];
 
 if(file_exists("../Db/Con1Db.php"))
 {
@@ -19,7 +19,7 @@ elseif(file_exists("Db/Con1Db.php"))
 
 $objData = new Datos;
 
-$buscaproducto = "select * from factura_venta where id_pedido=$idPedido";
+$buscaproducto = "select * from factura_venta where id_pedido='$textConsulta2'";
 $data = $objData->getData1($buscaproducto);
 
 if(empty($data))
@@ -27,14 +27,15 @@ if(empty($data))
     echo"
     <div class='bloque1'>
     No hay datos
+    
     </div>
     ";
+    echo $textConsulta2."hola";
 }else{
     echo"
     <div class='bloque0'>
         <div class='bloque1'>
-            <h1>Detalles del pedido $idPedido</h1>
-            <input type='hidden' id='idPedidoFacturaVenta' value='$idPedido'>
+            <h1>Detalles del pedido $textConsulta2</h1>
         </div>
     </div>
 

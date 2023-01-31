@@ -1,7 +1,7 @@
 <?php
 
 $textConsulta1 = empty($_POST['textFacturaVenta1']) ? '' : $_POST['textFacturaVenta1'];
-$textConsulta2 = empty($_POST['idPedidoFacturaVenta']) ? '' : $_POST['idPedidoFacturaVenta'];
+$textConsulta2 = empty($_POST['idDetalles']) ? '' : $_POST['idDetalles'];
 
 
 
@@ -22,7 +22,7 @@ elseif(file_exists("Db/Con1Db.php"))
 
 $objData = new Datos;
 
-$buscaproducto = "select * from factura_venta where id_pedido='$textConsulta2'";
+$buscaproducto = "select * from factura_venta where id_pedido='$textConsulta2' and cantidad='$textConsulta1'";
 $data = $objData->getData1($buscaproducto);
 
 if(empty($data))

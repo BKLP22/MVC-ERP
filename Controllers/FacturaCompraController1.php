@@ -34,6 +34,7 @@ if(empty($data))
     <div class='bloque0'>
         <div class='bloque1'>
             <h1>Detalles de la compra $idCompra</h1>
+            <input type='hidden' id='idPedidoFacturaCompra' value='$idCompra'>
         </div>
     </div>
 
