@@ -128,11 +128,13 @@ insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22
 create table if not exists usuarios (
     ide_usu int not null auto_increment primary key,
     nom_usu varchar(10) character set utf8 default null,
-    com_usu varchar(10) character set utf8 default null,
+    con_usu varchar(10) character set utf8 default null,
+    tip_usu int(2),
     unique(nom_usu)
 )engine=innoDB default charset=utf8 auto_increment=1;
 
-insert into usuarios (nom_usu, com_usu) values ("usu1", "con1");
+insert into usuarios (nom_usu, con_usu,tip_usu) values ("adm1", "adm1",0);
+insert into usuarios (nom_usu, con_usu,tip_usu) values ("usu", "con1",1);
 
 
 

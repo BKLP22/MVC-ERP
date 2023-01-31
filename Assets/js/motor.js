@@ -168,17 +168,6 @@ function modificarDatos1(form1, boton1, controlador1, div1)
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
 }
 
-
-
-
-
-
-
-
-
-
-
-
 function autent1(form1,boton1,r1,control1){
     deshabilitarControl1(boton1);
     ajaxPostLogin1(form1,r1,control1);
@@ -393,5 +382,20 @@ window.addEventListener("load", function()
         event.preventDefault();
         modificarDatos1(formEdicionProveedor1,boton1,controlador1,contenedor2);
       });
+    };
+
+    const formLogin1 = document.getElementById("formLogin1");
+    if (formLogin1)
+    {
+        const btnLogin1 = document.getElementById("login");
+        const r1 = document.createElement("r1");
+        const controlador1 = "Controllers/LoginController1.php"
+        formLogin1.addEventListener("submit", function(event){
+            event.preventDefault();
+            autent1(formLogin1,btnLogin1,r1,controlador1)
+
+
+        })
+
     }
 });
