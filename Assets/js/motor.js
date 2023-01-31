@@ -185,6 +185,24 @@ window.addEventListener("load", function()
     let div1;
     let div2;
 
+    /*Tratamiento de botones
+    Inicio boton registrarCompra    
+    */ 
+    let botonRegistrarCompra = document.getElementById("botonCrear1");
+    if(botonRegistrarCompra)
+    {
+        let divRegistraCompra = this.document.getElementById("contenedorRegistraCompra");
+        botonRegistrarCompra.addEventListener("click", function(){
+            let clase = divRegistraCompra.getAttribute("class");
+            if(clase=="hidden"){
+                divRegistraCompra.className="cajaemergente";
+            }else{
+                divRegistraCompra.className="hidden";
+            }
+        });
+    }
+
+
     /*--------------INICIO-(submit) Seleccionar 1 ----------------------*/
     //Paso 1:Obtener referencias
     const formConsulta1 = this.document.getElementById("formConsulta1");

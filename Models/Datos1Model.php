@@ -103,8 +103,10 @@ class Datos
           }
           else
           {
-              if($resultado = $stmt->get_result())
-              {
+            $resultado = $stmt->get_result();
+            $numeroRegistros = $resultado->num_rows;
+            if($numeroRegistros)
+            {
                   
                   //Acceso aceptado
                   //Iniciamos una nueva sesion
