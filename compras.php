@@ -11,5 +11,8 @@
 <body>
     <?php require_once "Views/Shared/Header3View.php";?>
     <?php require_once "Views/Compras/Compras1View.php";?>
+
+
+
 </body>
 </html>
