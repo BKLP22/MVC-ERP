@@ -51,7 +51,7 @@ if(empty($data))
             <div class='bloque1'>$row->correo</div>
             <div class='bloque1'>$row->cp</div>
             <div class='bloque1'>$row->tlf
-            <div class='bloque1'><a href='editarclientes.php?dni=$row->dni'>Editar</a></div>
+            <div class='bloque1'><a class='editar' href='editarclientes.php?dni=$row->dni'>Editar</a></div>
             </div>
         "; 
     }
