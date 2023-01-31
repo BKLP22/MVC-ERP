@@ -41,15 +41,13 @@ function ajaxPost1(form1,controlador1,div1)
 /*FIN - ajaxPost1 - Devuelve el resultadao a un div (POST) */
 
 /*INICIO - ajaxPost2 - Devuelve el resultadao a un div (POST) */
-function ajaxPost2(form1,controlador1,div1,form2)
+function ajaxPost2(form1,controlador1,div1,idDetalles)
 {
     // 1.- Creación del objeto XMLHttpRquest
     const Ajax1 = new XMLHttpRequest();
     // 2.- Enlace del formulario a un objeto FormData
     const FormData1 = new FormData(form1);
-    const FormData2 = new FormData(form2);
-
-    FormData1.
+    FormData1.append('idDetalles',idDetalles);
 
     // 5.- Éxito en el envío
     Ajax1.addEventListener("load",function(event)
@@ -64,7 +62,7 @@ function ajaxPost2(form1,controlador1,div1,form2)
     //3.- Configuración del envío del formulario atraves de un FromData
     Ajax1.open("POST",controlador1);
     //4.- Envio del formulario a tráves del FormData
-    Ajax1.send(FormData1,FormData2);
+    Ajax1.send(FormData1);
 }
 /*FIN - ajaxPost2 - Devuelve el resultadao a un div (POST) */
 
@@ -141,10 +139,10 @@ function seleccionarDatos2(form1, boton1, controlador1, div1)
   form1.reset();
 }
 
-function subconsultaDetalles(form1, boton1, controlador1, div1, form2)
+function subconsultaDetalles(form1, boton1, controlador1, div1, idDetalles)
 {
   deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
-  ajaxPost2(form1,controlador1,div1,form2);
+  ajaxPost2(form1,controlador1,div1,idDetalles);
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
   form1.reset();
 }
@@ -158,6 +156,16 @@ function insertarDatos1(form1, boton1, controlador1, div1)
   // ajaxPost2(form1,controlador1,div1);
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
   form1.reset();
+}
+
+function modificarDatos1(form1, boton1, controlador1, div1)
+{      
+  deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
+  // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
+  ajaxPost1(form1,controlador1,div1);
+  // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
+  // ajaxPost2(form1,controlador1,div1);
+  habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
 }
 
 
@@ -237,6 +245,19 @@ window.addEventListener("load", function()
             seleccionarDatos2(formConsulta01,botonConsulta02,controlador2,contenedor2);
         });
     }
+    const formEdicionClientes1 = document.getElementById("formEdicionClientes1");
+    // Paso 2 - Asociación del elemento al evento (submit) y llamada a la función
+    if(formEdicionClientes1)
+    {
+      // Referencia de los elementos
+      boton1 = document.getElementById("botonEdicionClientes1");
+      controlador1 = "Controllers/EditarClientesController2.php";
+      // Evento y llamada a la función
+      formEdicionClientes1.addEventListener("submit", function(event){
+        event.preventDefault();
+        modificarDatos1(formEdicionClientes1,boton1,controlador1,contenedor2);
+      });
+    }
     //Eventos de busqueda y ver todos de Ventas
 
     const formConsulta001 = this.document.getElementById("formConsultaVentas1");
@@ -264,25 +285,26 @@ window.addEventListener("load", function()
     //Eventos de bsuqueda y ver todos de Factura ventas(Detalles del pedido)
 
     const formConsulta000001 = this.document.getElementById("formFacturaVenta1");
-    const formConsulta000002 = this.document.getElementById("formFacturaVenta2");
     if(formConsulta000001)
     {
+        idDetalles=this.document.getElementById("idPedidoFacturaVenta");
+        console.log(idDetalles.value);
         boton1=this.document.getElementById("botonFacturaVenta1");
         controlador1="Controllers/FacturaVentaController2.php";
         formConsulta000001.addEventListener("submit",function(event)
         {
             event.preventDefault();
-            subconsultaDetalles(formConsulta000001,boton1,controlador1,contenedor2,formConsulta000002);
+            subconsultaDetalles(formConsulta000001,boton1,controlador1,contenedor2,idDetalles.value);
         });
     }
     const botonConsulta000002 = document.getElementById("botonFacturaVenta2");
     if(botonConsulta000002)
     {
-        controlador2="Controllers/FacturaVentaController1.php";
+        controlador2="Controllers/FacturaVentaController3.php";
         botonConsulta000002.addEventListener("click", function(event)
         {
             event.preventDefault();
-            seleccionarDatos2(formConsulta001,botonConsulta000002,controlador2,contenedor2);
+            subconsultaDetalles(formConsulta000001,boton1,controlador2,contenedor2,idDetalles.value);
         });
     }
 
@@ -312,6 +334,30 @@ window.addEventListener("load", function()
         });
     }
 
+    //Eventos de busqueda y ver todo de Factura Compra
+    const formConsulta000000001 = this.document.getElementById("formFacturaCompra1");
+    if(formConsulta000000001)
+    {
+        idDetalles=this.document.getElementById("idPedidoFacturaCompra");
+        console.log(idDetalles.value);
+        boton1=this.document.getElementById("botonFacturaCompra1");
+        controlador1="Controllers/FacturaCompraController2.php";
+        formConsulta000000001.addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            subconsultaDetalles(formConsulta000000001,boton1,controlador1,contenedor2,idDetalles.value);
+        });
+    }
+    const botonConsulta000000002 = document.getElementById("botonFacturaVenta2");
+    if(botonConsulta000000002)
+    {
+        controlador2="Controllers/FacturaCompraController3.php";
+        botonConsulta000000002.addEventListener("click", function(event)
+        {
+            event.preventDefault();
+            subconsultaDetalles(formConsulta000000001,boton1,controlador2,contenedor2,idDetalles.value);
+        });
+    }
     //Eventos de busqueda y ver todos de Proveedores
 
     const formConsulta00001 = this.document.getElementById("formConsultaProveedores1");
@@ -335,80 +381,17 @@ window.addEventListener("load", function()
             seleccionarDatos2(formConsulta0001,botonConsulta00002,controlador2,contenedor2);
         });
     }
-    const formInsercionProducto1 = document.getElementById("formInsercionProducto1");
+    const formEdicionProveedor1 = document.getElementById("formEdicionProveedores1");
     // Paso 2 - Asociación del elemento al evento (submit) y llamada a la función
-    if(formInsercionProducto1)
+    if(formEdicionProveedor1)
     {
       // Referencia de los elementos
-      boton1 = document.getElementById("botonInsercionProducto1");
-      controlador1 = "Controllers/ProductosController3.php";
+      boton1 = document.getElementById("botonEdicionProveedores1");
+      controlador1 = "Controllers/EditarProveedoresController2.php";
       // Evento y llamada a la función
-      formInsercionProducto1.addEventListener("submit", function(event){
+      formEdicionProveedor1.addEventListener("submit", function(event){
         event.preventDefault();
-        insertarDatos1(formInsercionProducto1,boton1,controlador1,contenedor2);
+        modificarDatos1(formEdicionProveedor1,boton1,controlador1,contenedor2);
       });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //-----Login---
-    const loginForm = document.getElementById("loginForm");
-    if(loginForm){
-       const btnLogin = document.getElementById("login");
-       const r1 = document.getElementById("r1");
-       const controlador1 = document.getElementById("Controllers/LoginController1.php");
-        loginForm.addEventListener("submit",function(event){
-            event.preventDefault();
-            autent1(loginForm,btnLogin,r1,controlador1);
-
-        });
-    }
-
 });

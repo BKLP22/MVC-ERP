@@ -50,7 +50,7 @@ if(empty($data))
             <div class='bloque1'>$row->correo</div>
             <div class='bloque1'>$row->tlf</div>
             <div class='bloque1'>$row->iban</div>
-            <div class='bloque1'><input type='button' name='botonEditarProveedores2' class='editar' value='Editar'id=$row->id_proveedor></div>
+            <div class='bloque1'><a href='editarproveedores.php?idproveedor=$row->id_proveedor'>Editar</a></div>
         </div>
         "; 
     }

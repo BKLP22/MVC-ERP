@@ -38,6 +38,7 @@ if(empty($data))
     <div class='bloque1'><h1 class='border'>Correo venta</h1></div>
     <div class='bloque1'><h1 class='border'>Tlf envio</h1></div>
     <div class='bloque1'><h1 class='border'>IBAN</h1></div>
+    <div class='bloque1'></div>
     </div>
     ";
     foreach($data as $row)
@@ -50,6 +51,7 @@ if(empty($data))
             <div class='bloque1'>$row->correo</div>
             <div class='bloque1'>$row->tlf</div>
             <div class='bloque1'>$row->iban</div>
+            <div class='bloque1'><a href='editarproveedores.php?idproveedor=$row->id_proveedor'>Editar</a></div>
         "; 
     }
 }
