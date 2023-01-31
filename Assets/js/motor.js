@@ -189,15 +189,19 @@ window.addEventListener("load", function()
     Inicio boton registrarCompra    
     */ 
     let botonRegistrarCompra = document.getElementById("botonCrear1");
-    let divRegistraCompra = this.document.getElementById("contenedorRegistraCompra");
-    botonRegistrarCompra.addEventListener("click", function(){
-        let clase = divRegistraCompra.getAttribute("class");
-        if(clase=="hidden"){
-            divRegistraCompra.className="cajaemergente";
-        }else{
-            divRegistraCompra.className="hidden";
-        }
-    });
+    if(botonRegistrarCompra)
+    {
+        let divRegistraCompra = this.document.getElementById("contenedorRegistraCompra");
+        botonRegistrarCompra.addEventListener("click", function(){
+            let clase = divRegistraCompra.getAttribute("class");
+            if(clase=="hidden"){
+                divRegistraCompra.className="cajaemergente";
+            }else{
+                divRegistraCompra.className="hidden";
+            }
+        });
+    }
+
 
     /*--------------INICIO-(submit) Seleccionar 1 ----------------------*/
     //Paso 1:Obtener referencias
