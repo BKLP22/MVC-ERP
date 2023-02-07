@@ -8,7 +8,7 @@
                     <p id="r1">&nbsp;</p>
                 </div>
                 <div>
-                    <div class="pb-2"><input class="input-log" type="text" name="nom_usu" id="nom_usu" placeholder="Usuario"></div>
+                    <div class="pb-2"><input class="input-log" type="text" name="cor_usu" id="nom_usu" placeholder="Correo"></div>
                     <div class="pb-2"><input class="input-log" type="password" name="con_usu" id="con_usu" placeholder="Contraseña"></div>
                 </div>
 

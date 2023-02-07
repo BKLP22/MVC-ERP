@@ -17,14 +17,16 @@ if(file_exists("../Db/Con1Db.php"))
 
 
 // Declarar e inicializar la vriable respuesta a devolver a motor.js
-$respuesta=0;
+    $nom_usu = empty($_POST['nom_usu']) ? '' : $_POST['nom_usu'];
+    $cor_usu = empty($_POST['cor_usu']) ? '' : $_POST['cor_usu'];
+    $con_usu = empty($_POST['con_usu']) ? '' : $_POST['con_usu'];
+    $passw_encriptada = password_hash( $con_usu,PASSWORD_DEFAULT);
 //Obtener el usuario y la clave
-$cor_usu=$_POST['cor_usu'];
-$con_usu=$_POST['con_usu'];
+
 
 $oData = new Datos;
-$sql = "select * from usuarios where cor_usu=? and con_usu=?";
-$data = $oData->login($sql,$cor_usu,$con_usu);
+$sql = "insert into usuarios (nom_usu, cor_usu, con_usu) values (?, ?, ?)";
+$data = $oData->RegistroUsuarios($sql,$nom_usu,$cor_usu, $passw_encriptada);
 
 echo $data;
 
