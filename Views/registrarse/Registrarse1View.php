@@ -2,7 +2,7 @@
 <section class="Sregister">
     <div class="cajaAzul">
                 <div class="pt-2">
-                    <h1><a href="index.php" class="enlaceERP">ERP</a></h1>
+                    <h1><a href="erp.php" class="enlaceERP">ERP</a></h1>
                     <h4 class="pt frasesregistros">Registro Usuario</h4>
                 </div>
               

@@ -1,3 +1,4 @@
+<?php  require_once('Controllers/Control_acceso.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

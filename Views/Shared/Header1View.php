@@ -33,8 +33,8 @@
            
         </div>
         <div class="col-2 flex cosa">
-            <a class="col-5" href="iniciarsesion.php"><img class="s1" src="Assets/img/usuario.png" alt="iniciosesion"></a>
-            <a class="col-7" href="registrarse.php"><img class="s1" src="Assets/img/registro.png" alt="registro" ></a>
+            <a class="col-12" href="iniciarsesion.php"><img class="s1" src="Assets/img/usuario.png" alt="iniciosesion"></a>
+            <!-- <a class="col-7" href="registrarse.php"><img class="s1" src="Assets/img/registro.png" alt="registro" ></a> -->
         </div>
         
     

@@ -14,7 +14,7 @@
 
                 <div class="pb"><a href="" class="textaling-r frasesregistros">¿Has olvidado la contraseña?</a></div>
                 <div class="pb-2"><input type="submit" value="Aceptar" class="botondescubrir input-log" id="login"></div>
-                <div> <a href="registrarse.php" class="textaling-r frasesregistros">Crear nuevo usuario</a></div>
+                <!-- <div> <a href="registrarse.php" class="textaling-r frasesregistros">Crear nuevo usuario</a></div> -->
 
             </form>
         </div>
