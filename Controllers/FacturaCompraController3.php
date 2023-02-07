@@ -19,7 +19,7 @@ elseif(file_exists("Db/Con1Db.php"))
 
 $objData = new Datos;
 
-$buscaproducto = "select * from factura_compra where id_pedido='$textConsulta2'";
+$buscaproducto = "select * from factura_compra where id_compra='$textConsulta2'";
 $data = $objData->getData1($buscaproducto);
 
 if(empty($data))

@@ -1,5 +1,4 @@
 <?php
-
 $idPedido = $_GET['idPedido'];
 
 if(file_exists("../Db/Con1Db.php"))

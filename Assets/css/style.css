@@ -540,7 +540,7 @@ select {
     height: 25vh;
     display: flex;
     justify-content: space-between;
-    flex-direction:row ;
+    flex-direction:column ;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -548,4 +548,11 @@ select {
     box-shadow: 0px 1px 5px 0px #3FBF6D;
     background-color: #e0e0e0;
     border: 1px solid #3FBF6D;
+}
+.divtitulosEmergente{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    height: 100%;
+
 }
