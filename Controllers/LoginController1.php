@@ -23,7 +23,7 @@ $cor_usu=$_POST['cor_usu'];
 $con_usu=$_POST['con_usu'];
 
 $oData = new Datos;
-$sql = "select * from usuarios where cor_usu=? and con_usu=?";
+$sql = "select * from usuarios where cor_usu=?";
 $data = $oData->login($sql,$cor_usu,$con_usu);
 
 echo $data;
