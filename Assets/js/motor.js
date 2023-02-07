@@ -351,6 +351,17 @@ window.addEventListener("load", function()
         });
     }
 
+
+    const botonRegistrarCompra1 = this.document.getElementById("botonRegistroCompra1");
+    if(botonRegistrarCompra1)
+    {
+        let controlador3="Controllers/ProveedoresSelect1Controller.php";
+        let formRegistrarCompra1 = this.document.getElementById("formFacturaCompraEmergente1");
+        botonRegistrarCompra1.addEventListener("click",function(){
+            insertarDatos1(formRegistrarCompra1,botonRegistrarCompra1);
+        });
+    }
+
     //Eventos de busqueda y ver todo de Factura Compra
     const formConsulta000000001 = this.document.getElementById("formFacturaCompra1");
     if(formConsulta000000001)
@@ -365,7 +376,7 @@ window.addEventListener("load", function()
             subconsultaDetalles(formConsulta000000001,boton1,controlador1,contenedor2,idDetalles.value);
         });
     }
-    const botonConsulta000000002 = document.getElementById("botonFacturaVenta2");
+    const botonConsulta000000002 = document.getElementById("botonFacturaCompra2");
     if(botonConsulta000000002)
     {
         controlador2="Controllers/FacturaCompraController3.php";
