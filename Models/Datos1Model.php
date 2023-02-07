@@ -89,13 +89,13 @@ class Datos
 
     
       // No devuelve datos de la BD (insert, update, delete con consultas preparadas)
-      public function login($sql, $nom_usu, $con_usu)
+      public function login($sql, $cor_usu,$con_usu)
       {
-          $nom_usu = $this->mysqli->real_escape_string($nom_usu);
-          $con_usu = $this->mysqli->real_escape_string($con_usu);
+          $nom_usu = $this->mysqli->real_escape_string($cor_usu);
+          
 
           $stmt = $this->mysqli->prepare($sql);
-          $stmt->bind_param("ss", $nom_usu, $con_usu); // ssis = string, string, integer, string
+          $stmt->bind_param("s", $cor_usu); // ssis = string, string, integer, string
           
           if(!$stmt->execute())
           {
@@ -107,7 +107,7 @@ class Datos
             $numeroRegistros = $resultado->num_rows;
             if($numeroRegistros)
             {
-                  
+                 
                   //Acceso aceptado
                   //Iniciamos una nueva sesion
                   session_start();
@@ -115,13 +115,22 @@ class Datos
                   $_SESSION['autenticado']="true";
                   while($fila = $resultado->fetch_assoc())
                   {
+                    if(password_verify($con_usu,$fila['con_usu'])){
+                        
                       $_SESSION['ide_usu']=$fila['ide_usu'];
                       $_SESSION['nom_usu']=$fila['nom_usu'];
                       $_SESSION['tip_usu']=$fila['tip_usu'];
+
+                      $respuesta=1;
                      
+                    } else{
+                        $respuesta=0;
+
+                    }
+
                   }
                   //devuelve 1 a autenticar1 en motor.js (Acceso aceptado)
-                  $respuesta=1;
+                 
               }
               else
               {
@@ -133,6 +142,31 @@ class Datos
               $this->mysqli->close();
               return $respuesta;
           }
+      }
+
+     
+
+
+      public function RegistroUsuarios($sql, $par1, $par2, $par3)
+      {
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->bind_param("sss", $par1, $par2, $par3);
+        if(!$stmt->execute())
+        {
+             $result = "La operacion no se ha podido realizar.";
+             echo "Detalle del error en la consulta (setData1) - ";
+            // echo "Numero del error: " . $this->mysqli->errno . " - ";
+            // echo "Descripcion del error: " . $this->mysqli->error;
+        }
+        else
+        {
+            $result = "Operacion realizada con exito";
+        }
+        $this->mysqli->close();
+        return $result;
+        
+        
+
       }
 }
 ?>

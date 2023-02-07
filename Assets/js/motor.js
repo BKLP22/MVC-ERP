@@ -27,6 +27,7 @@ function ajaxPost1(form1,controlador1,div1)
     Ajax1.addEventListener("load",function(event)
     {
         document.getElementById(div1.id).innerHTML = this.responseText;
+        console.log(controlador1);
     });
     //5.- Error en el envio 
     Ajax1.addEventListener("error",function(event)
@@ -81,9 +82,6 @@ function ajaxGet1(controlador1,div1)
     Ajax1.open("GET",controlador1);
     Ajax1.send();
 }
-
-
-
 
 function  ajaxPostLogin1(form1,r1,control1)
 {
@@ -151,11 +149,23 @@ function insertarDatos1(form1, boton1, controlador1, div1)
 {      
   deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
   // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
+  console.log(controlador1);
   ajaxPost1(form1,controlador1,div1);
   // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
   // ajaxPost2(form1,controlador1,div1);
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
   form1.reset();
+}
+
+function  insertarRegistro(formRegistro1,btnRegistro,r1,controlador1){
+    deshabilitarControl1(btnRegistro, "boton1", "boton1Inhabilitado");
+  // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
+  ajaxPost1(formRegistro1,controlador1,r1);
+  // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
+  // ajaxPost2(form1,controlador1,div1);
+  habilitarControl1(btnRegistro, "boton1Inhabilitado", "boton1");
+  formRegistro1.reset();
+
 }
 
 function modificarDatos1(form1, boton1, controlador1, div1)
@@ -412,6 +422,7 @@ window.addEventListener("load", function()
         modificarDatos1(formEdicionProveedor1,boton1,controlador1,contenedor2);
       });
     };
+    //----------------------Login--------------------
 
     const formLogin1 = document.getElementById("formLogin1");
     if (formLogin1)
@@ -424,4 +435,19 @@ window.addEventListener("load", function()
             autent1(formLogin1,btnLogin1,r1,controlador1)
         })
     }
+
+    //-----------------------Registro---------------------
+    const formRegistro1 = document.getElementById("formRe");
+    if(formRegistro1){
+        console.log(formRegistro1)
+        const btnRegistro = document.getElementById("registrar");
+        const r1 = document.getElementById("r1");
+        const controlador1 = "Controllers/RegistroController1.php";
+        formRegistro1.addEventListener("submit", function(event){
+            event.preventDefault();
+            insertarDatos1(formRegistro1,btnRegistro,controlador1,r1)
+        })
+
+    }
+
 });

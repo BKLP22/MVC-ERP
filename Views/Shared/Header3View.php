@@ -29,6 +29,7 @@
                 </div>
         </form> -->
         <div class="col-2 center" id="usuario">
-        <a href="iniciarsesion.php"><img class="s1" src="Assets/img/usuario.png" alt="iniciosesion"></a>
+        <a class="col-6" href="iniciarsesion.php"><img class="s1" src="Assets/img/usuario.png" alt="iniciosesion"></a>
+        <a class="col-6" href="index.php"><img class="s1" src="Assets/img/cerrar.png" alt="cerrarsesion"></a>
         </div>
     </header>
