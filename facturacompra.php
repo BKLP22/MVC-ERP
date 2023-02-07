@@ -10,7 +10,7 @@
     <script src="Assets/js/motor.js"></script>
 </head>
 <body>
-    <?php require_once "Views/Shared/Header1View.php";?>
-    <?php require_once "Views/Shared/FacturaCompra1View.php";?>
+    <?php require_once "Views\Shared\Header3View.php";?>
+    <?php require_once "Views/Compras/FacturaCompra1View.php";?>
 </body>
 </html>

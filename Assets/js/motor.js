@@ -422,9 +422,6 @@ window.addEventListener("load", function()
         formLogin1.addEventListener("submit", function(event){
             event.preventDefault();
             autent1(formLogin1,btnLogin1,r1,controlador1)
-
-
         })
-
     }
 });

@@ -11,7 +11,9 @@
             <!-- <input type="text" name="textRegistrarCompra2" id="textRegistrarCompra2" required class="campo1"> -->
             <?php require_once('Controllers/ProveedoresSelect1Controller.php');?>
 
-            <a href="facturacompra.php" class="boton1"><input type="button" name="botonRegistrarCompra1" id="botonRegistrarCompra1"  value="Aceptar"></a>
+            <div class="boton1">
+                <a href="facturacompra.php"><input type="button" name="botonRegistrarCompra1" id="botonRegistrarCompra1"  value="Aceptar" ></a>
+            </div>
         </form>
     </div>
 </div>
