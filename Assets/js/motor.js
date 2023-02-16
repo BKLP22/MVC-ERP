@@ -27,7 +27,7 @@ function ajaxPost1(form1,controlador1,div1)
     Ajax1.addEventListener("load",function(event)
     {
         document.getElementById(div1.id).innerHTML = this.responseText;
-        console.log(controlador1);
+        
     });
     //5.- Error en el envio 
     Ajax1.addEventListener("error",function(event)
@@ -149,12 +149,21 @@ function insertarDatos1(form1, boton1, controlador1, div1)
 {      
   deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
   // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
-  console.log(controlador1);
   ajaxPost1(form1,controlador1,div1);
   // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
   // ajaxPost2(form1,controlador1,div1);
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
   form1.reset();
+}
+
+function insertarDatosSinReset(form1, boton1, controlador1, div1)
+{      
+  deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
+  // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
+  ajaxPost1(form1,controlador1,div1);
+  // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
+  // ajaxPost2(form1,controlador1,div1);
+  habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
 }
 
 function  insertarRegistro(formRegistro1,btnRegistro,r1,controlador1){
@@ -189,28 +198,12 @@ function autent1(form1,boton1,r1,control1){
 window.addEventListener("load", function()
 {
     let boton1;
+    let boton2;
     let controlador1;
     let controlador2;
     let idDetalles;
     let div1;
     let div2;
-
-    /*Tratamiento de botones
-    Inicio boton registrarCompra    
-    */ 
-    let botonRegistrarCompra = document.getElementById("botonCrear1");
-    if(botonRegistrarCompra)
-    {
-        let divRegistraCompra = this.document.getElementById("contenedorRegistraCompra");
-        botonRegistrarCompra.addEventListener("click", function(){
-            let clase = divRegistraCompra.getAttribute("class");
-            if(clase=="hidden"){
-                divRegistraCompra.className="cajaemergente";
-            }else{
-                divRegistraCompra.className="hidden";
-            }
-        });
-    }
 
 
     /*--------------INICIO-(submit) Seleccionar 1 ----------------------*/
@@ -351,14 +344,34 @@ window.addEventListener("load", function()
         });
     }
 
-
-    const botonRegistrarCompra1 = this.document.getElementById("botonRegistroCompra1");
-    if(botonRegistrarCompra1)
+    //formRegistrarCompra1
+    const formRegistrarCompra1 = this.document.getElementById("formRegistrarCompra1");
+    if(formRegistrarCompra1)
     {
-        let controlador3="Controllers/ProveedoresSelect1Controller.php";
-        let formRegistrarCompra1 = this.document.getElementById("formFacturaCompraEmergente1");
-        botonRegistrarCompra1.addEventListener("click",function(){
-            insertarDatos1(formRegistrarCompra1,botonRegistrarCompra1);
+        boton1= this.document.getElementById('botonRegistrarCompra1');
+        controlador1="Controllers/RegistraCompraInicioController1.php";
+        const spanPedido = this.document.getElementById('numeroPedido');
+        formRegistrarCompra1.addEventListener('submit',function(event)
+        {
+            event.preventDefault();
+            insertarDatosSinReset(formRegistrarCompra1,boton1,controlador1,spanPedido);
+        });
+    }
+
+    //formRegistraProducto1
+
+    const formRegistraProducto1 = this.document.getElementById("formRegistraProducto1");
+    if(formRegistraProducto1)
+    {
+        boton2= this.document.getElementById('botonRegistrarProducto');
+        controlador2="Controllers/RegistraCompraProductoController1.php";
+        const spanPedidoId = this.document.getElementById('numeroPedido').innerText;
+        let inputId =this.document.createElement('input').innerText;
+        inputId.value = spanPedidoId;
+        formRegistraProducto1.addEventListener('submit',function(event)
+        {
+            event.preventDefault();
+            subconsultaDetalles(formRegistraProducto1,boton2,controlador2,contenedor2,inputId.value);
         });
     }
 
@@ -449,5 +462,7 @@ window.addEventListener("load", function()
         })
 
     }
+
+    
 
 });

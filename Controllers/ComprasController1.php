@@ -48,6 +48,7 @@ if(empty($data))
             <div class='bloque1'>$row->precio</div>
             <div class='bloque1'>$row->coste_logistico</div>
             <div class='bloque1'><a href='detalles_compra.php?idCompra=$row->id_compra' class='enlaces2'>Detalles</a></div>
+        </div>
         "; 
     }
 }

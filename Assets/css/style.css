@@ -555,14 +555,14 @@ select {
 }
 
 .cajaemergente div input{
+    padding: 10%;
     background-color: #3FBF6D;
-    border: none;
     color: #ffffff;
 }
 .cajaemergente div:hover input{
     background-color: #ffffff;
     color: #3FBF6D;
-}
+} 
 
 .cajaFacturaCompra
 {
@@ -582,6 +582,10 @@ select {
 .cajaBotonProducto{
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     margin-right: 9%;
+    margin-left: 9%;
+}
+a.boton1 {
+    text-decoration: none;
 }
