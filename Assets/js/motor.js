@@ -399,6 +399,20 @@ window.addEventListener("load", function()
             subconsultaDetalles(formRegistraProducto1,boton2,controlador2,contenedor2,inputId.value);
         });
     }
+    //Editar producto
+    const formEdicionProductos1 = document.getElementById("formEditarProducto1");
+    // Paso 2 - Asociación del elemento al evento (submit) y llamada a la función
+    if(formEdicionProductos1)
+    {
+      // Referencia de los elementos
+      boton1 = document.getElementById("botonEditarProducto");
+      controlador1 = "Controllers/EditarProductoController2.php";
+      // Evento y llamada a la función
+      formEdicionProductos1.addEventListener("submit", function(event){
+        event.preventDefault();
+        modificarDatos1(formEdicionProductos1,boton1,controlador1,contenedor2);
+      });
+    };
 
     //Eventos de busqueda y ver todo de Factura Compra
     const formConsulta000000001 = this.document.getElementById("formFacturaCompra1");

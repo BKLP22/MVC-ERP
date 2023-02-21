@@ -1,9 +1,9 @@
 <div class="pt-2">
 <?php require_once "Controllers/EditarProductoController1.php"; ?>
-    <form id="formRegistraProducto1" class="formFacturaCompra pt-2 pb-2">
+    <form id="formEditarProducto1" class="formFacturaCompra pt-2 pb-2">
         <div class="col-12">
             <h4>ID Producto</h4>
-                <input type="text" name="id" id="id" disabled value='<?php echo $id_producto ?>'>
+                <input type="text" name="id" id="id" value='<?php echo $id_producto ?>'>
         </div> 
                 <div class="col-12 cajaFacturaCompra">
 
@@ -43,7 +43,8 @@
                     <textarea  class="col-10" name="descripcion" id="descripcion"  rows="10" ><?php echo $descripcion ?></textarea>
                 </div>
                 <div class="cajaBotonProducto">
-                    <input type="submit" id="botonRegistrarProducto" name="botonRegistrarProducto" class="boton1" value="Registrar producto">
+                    <input type="submit" id="botonEditarProducto" name="botonEditarProducto" class="boton1" value="Editar producto">
             </div>
             </form>
+            <div id="contenedor2"></div>
         </div>
