@@ -37,6 +37,8 @@ if(empty($data))
     <div class='bloque1'><h1 class='border'>Marca</h1></div>
     <div class='bloque1'><h1 class='border'>Categoria</h1></div>
     <div class='bloque1'><h1 class='border'>Stock</h1></div>
+    <div class='bloque1'></div>
+
 
     </div>
     ";
@@ -51,6 +53,8 @@ if(empty($data))
             <div class='bloque1'>$row->marca</div>
             <div class='bloque1'>$row->categoria</div>
             <div class='bloque1'>$row->stock</div>
+            <div class='bloque1'><a class='editar' href='editarproducto.php?id=$row->id_producto'>Editar</a></div>
+
             </div>
         "; 
     }

@@ -21,7 +21,12 @@
         </div>
         <div class="pt-2">
             <form id="formRegistraProducto1" class="formFacturaCompra pt-2 pb-2">
+                    <div class="col-12">
+                        <h4>Referencia</h4>
+                        <input type="text" name="id" id="id">
+                    </div> 
                 <div class="col-12 cajaFacturaCompra">
+
                     <div class="col-6">
                         <div>
                             <h4>Modelo</h4>
@@ -58,10 +63,11 @@
                     <textarea  class="col-10" name="descripcion" id="descripcion"  rows="10"></textarea>
                 </div>
                 <div class="cajaBotonProducto">
-                    <h3>Numero del pedido: <span id="numeroPedido"></span></h3>
                     <input type="submit" id="botonRegistrarProducto" name="botonRegistrarProducto" class="boton1" value="Registrar producto">
-                </div>
+            </div>
             </form>
+            <h3>Numero del pedido: <input type="number" value="" id="numeroPedido" name="numeroPedido"></h3>
+
         </div>
         <div class="contenedor2" id="contenedor2">
         </div>

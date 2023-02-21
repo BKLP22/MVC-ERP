@@ -48,6 +48,8 @@ function ajaxPost2(form1,controlador1,div1,idDetalles)
     const Ajax1 = new XMLHttpRequest();
     // 2.- Enlace del formulario a un objeto FormData
     const FormData1 = new FormData(form1);
+    //Le damos el name e inidicamos que input añadimos
+    console.log(idDetalles);
     FormData1.append('idDetalles',idDetalles);
 
     // 5.- Éxito en el envío
@@ -66,6 +68,31 @@ function ajaxPost2(form1,controlador1,div1,idDetalles)
     Ajax1.send(FormData1);
 }
 /*FIN - ajaxPost2 - Devuelve el resultadao a un div (POST) */
+
+/*INICIO - ajaxPost3 - Devuelve el resultadao al value de un input (POST) */
+function ajaxPost3(form1,controlador1,input1)
+{
+    // 1.- Creación del objeto XMLHttpRquest
+    const Ajax1 = new XMLHttpRequest();
+    // 2.- Enlace del formulario a un objeto FormData
+    const FormData1 = new FormData(form1);
+    // 5.- Éxito en el envío
+    Ajax1.addEventListener("load",function(event)
+    {
+        document.getElementById(input1.id).value = this.responseText;
+        
+    });
+    //5.- Error en el envio 
+    Ajax1.addEventListener("error",function(event)
+    {
+        alert("Error, no se ha enviado la información");
+    });
+    //3.- Configuración del envío del formulario atraves de un FromData
+    Ajax1.open("POST",controlador1);
+    //4.- Envio del formulario a tráves del FormData
+    Ajax1.send(FormData1);
+}
+/*FIN - ajaxPost3 - Devuelve el resultadao al value de un input (POST) */
 
 /*INICIO - ajaxGet1 - Devuelve el resultadao a un div (GET) */
 function ajaxGet1(controlador1,div1)
@@ -160,7 +187,7 @@ function insertarDatosSinReset(form1, boton1, controlador1, div1)
 {      
   deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
   // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
-  ajaxPost1(form1,controlador1,div1);
+  ajaxPost3(form1,controlador1,div1);
   // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
   // ajaxPost2(form1,controlador1,div1);
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
@@ -365,9 +392,7 @@ window.addEventListener("load", function()
     {
         boton2= this.document.getElementById('botonRegistrarProducto');
         controlador2="Controllers/RegistraCompraProductoController1.php";
-        const spanPedidoId = this.document.getElementById('numeroPedido').innerText;
-        let inputId =this.document.createElement('input').innerText;
-        inputId.value = spanPedidoId;
+        const inputId = this.document.getElementById("numeroPedido");
         formRegistraProducto1.addEventListener('submit',function(event)
         {
             event.preventDefault();
@@ -386,6 +411,7 @@ window.addEventListener("load", function()
         formConsulta000000001.addEventListener("submit",function(event)
         {
             event.preventDefault();
+            console.log
             subconsultaDetalles(formConsulta000000001,boton1,controlador1,contenedor2,idDetalles.value);
         });
     }
