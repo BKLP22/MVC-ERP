@@ -1,141 +1,435 @@
-DROP DATABASE erp;
-CREATE DATABASE erp;
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-02-2023 a las 12:46:17
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
-USE erp;
-
-CREATE TABLE proveedores(
-    id_proveedor INTEGER(3) AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(40),
-    cp VARCHAR(6),
-    ciudad VARCHAR(20),
-    correo VARCHAR(40),
-    tlf VARCHAR(14),
-    iban VARCHAR(30)
-);
-
-CREATE TABLE compras(
-    id_compra INT(6) AUTO_INCREMENT PRIMARY KEY,
-    id_proveedor INTEGER(3),
-    fecha_compra DATETIME,
-    precio DECIMAL(9,2),
-    coste_logistico DECIMAL(6,2)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE factura_compra(
-    id_compra INT(6),
-    id_producto VARCHAR(6),
-    cantidad INT(4),
-    precio_unitario DECIMAL (9,2),
-    total DECIMAL (9,2),
-    PRIMARY KEY (id_compra,id_producto)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE productos(
-    id_producto VARCHAR(6) PRIMARY KEY,
-    precio_unitario DECIMAL(9,2),
-    pvp DECIMAL(9,2),
-    modelo VARCHAR(30),
-    marca VARCHAR(30),
-    categoria VARCHAR(20),
-    descripcion VARCHAR(60),
-    stock INT(6)
-);
+--
+-- Base de datos: `erp`
+--
 
-ALTER TABLE productos ADD COLUM final BOOLEAN;
+-- --------------------------------------------------------
 
-CREATE TABLE factura_venta(
-    id_pedido INT(6),
-    id_producto VARCHAR (6),
-    cantidad INT(4),
-    pvp_unitario DECIMAL (9,2),
-    total DECIMAL (9,2),
-    PRIMARY KEY (id_pedido,id_producto)
-);
+--
+-- Estructura de tabla para la tabla `clientes`
+--
 
--- insert into factura values ("1", "p007", 1, "1");
--- insert into factura values ("1", "p008", 1, "1")
+CREATE TABLE `clientes` (
+  `dni` varchar(9) NOT NULL,
+  `nombre` varchar(30) DEFAULT NULL,
+  `apellido` varchar(30) DEFAULT NULL,
+  `correo` varchar(40) DEFAULT NULL,
+  `ciudad` varchar(30) DEFAULT NULL,
+  `cp` varchar(6) DEFAULT NULL,
+  `iban` varchar(30) DEFAULT NULL,
+  `tlf` varchar(14) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE envio(
-    id_pedido INT(6) PRIMARY KEY,
-    total DECIMAL(9,2),
-    dni_cliente VARCHAR(9),
-    coste_envio DECIMAL(5,2),
-    tiempo_estimado VARCHAR(30),
-    tiempo_real VARCHAR(30),
-    fecha_venta DATETIME,
-    fecha_envio DATETIME,
-    direccion VARCHAR(50)
-);
+--
+-- Volcado de datos para la tabla `clientes`
+--
 
-CREATE TABLE clientes(
-    dni VARCHAR(9) PRIMARY KEY,
-    nombre VARCHAR(30),
-    apellido VARCHAR(30),
-    correo VARCHAR(40),
-    ciudad VARCHAR(30),
-    cp VARCHAR(6),
-    iban VARCHAR(30),
-    tlf VARCHAR(14)
-);
+INSERT INTO `clientes` (`dni`, `nombre`, `apellido`, `correo`, `ciudad`, `cp`, `iban`, `tlf`) VALUES
+('35678788C', 'Steven', 'Miguel', 'steven@gmail.com', 'Madrid', '28037', 'ES7921000813610723462213', '629749431');
 
-CREATE TABLE escandallo(
-    id_compuesto VARCHAR(6),
-    id_producto VARCHAR(6),
-    nombre VARCHAR(30),
-    uds INTEGER(3),
-    PRIMARY KEY (id_compuesto,id_producto)
-);
--- Claves foraneas del proceso de venta
-ALTER TABLE envio ADD CONSTRAINT fk_pedidos_dni FOREIGN KEY (dni_cliente) REFERENCES clientes (dni);
-ALTER TABLE envio ADD CONSTRAINT fk_factura_idenvio FOREIGN KEY (id_pedido) REFERENCES factura_venta (id_pedido);
-ALTER TABLE factura_venta ADD CONSTRAINT factura FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
+-- --------------------------------------------------------
 
-ALTER TABLE compras ADD CONSTRAINT fk_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedores (id_proveedor);
--- ALTER TABLE compras ADD CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES productos (id_producto);
+--
+-- Estructura de tabla para la tabla `compras`
+--
 
---ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KEY (id_producto) REFERENCES productos(id_producto);
-ALTER TABLE productos ADD CONSTRAINT fk_facturacompra_idproducto FOREIGN KEY (id_producto) REFERENCES factura_compra(id_producto);
-ALTER TABLE escandallo ADD CONSTRAINT fk_escandallo_productos FOREIGN KEY (id_compuesto) REFERENCES productos(id_producto);
-ALTER TABLE productos ADD CONSTRAINT fk_produtos_escandallo FOREIGN KEY (id_producto) REFERENCES escandallo(id_producto);
+CREATE TABLE `compras` (
+  `id_compra` int(6) NOT NULL,
+  `id_proveedor` int(3) DEFAULT NULL,
+  `fecha_compra` datetime DEFAULT NULL,
+  `precio` decimal(9,2) DEFAULT NULL,
+  `coste_logistico` decimal(6,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-ALTER TABLE factura_compra ADD CONSTRAINT fk_facturacompra_idcompra FOREIGN KEY (id_compra) REFERENCES compras(id_compra);
+--
+-- Volcado de datos para la tabla `compras`
+--
 
-ALTER TABLE clientes ADD CONSTRAINT fk_cppoblaciones_cpclientes FOREIGN KEY (cp) REFERENCES poblaciones(cp);
-ALTER TABLE proveedores ADD CONSTRAINT fk_cppoblaciones_cpproveedores FOREIGN KEY (cp) REFERENCES poblaciones(cp);
+INSERT INTO `compras` (`id_compra`, `id_proveedor`, `fecha_compra`, `precio`, `coste_logistico`) VALUES
+(1, 1, '0000-00-00 00:00:00', '1040.00', '8.30'),
+(3, 1, '0000-00-00 00:00:00', NULL, NULL),
+(4, 1, '1212-12-12 00:00:00', NULL, NULL),
+(5, 1, '1313-12-13 00:00:00', NULL, NULL),
+(6, 1, '1414-12-13 00:00:00', NULL, NULL),
+(7, 1, '1333-03-12 00:00:00', NULL, NULL),
+(8, 1, '1232-03-12 00:00:00', NULL, NULL),
+(9, 1, '3321-03-31 00:00:00', NULL, NULL),
+(10, 1, '3321-03-31 00:00:00', NULL, NULL),
+(11, 1, '3321-03-31 00:00:00', NULL, NULL),
+(12, 1, '3321-03-31 00:00:00', NULL, NULL),
+(13, 1, '3321-03-31 00:00:00', NULL, NULL),
+(14, 1, '3332-03-31 00:00:00', NULL, NULL),
+(15, 1, '1212-03-12 00:00:00', NULL, NULL),
+(17, 1, '2121-03-12 00:00:00', NULL, NULL),
+(18, 1, '2333-03-12 00:00:00', NULL, NULL),
+(19, 1, '2333-03-12 00:00:00', NULL, NULL),
+(20, 1, '1233-03-12 00:00:00', NULL, NULL),
+(21, 1, '2133-03-12 00:00:00', NULL, NULL),
+(22, 1, '3333-02-12 00:00:00', NULL, NULL),
+(23, 1, '3332-03-12 00:00:00', NULL, NULL),
+(24, 1, '1233-03-12 00:00:00', NULL, NULL),
+(25, 1, '2132-03-12 00:00:00', NULL, NULL),
+(26, 1, '2023-02-10 00:00:00', NULL, NULL),
+(27, 1, '2023-02-18 00:00:00', NULL, NULL),
+(28, 1, '2023-02-10 00:00:00', NULL, NULL),
+(29, 1, '2023-02-16 00:00:00', NULL, NULL),
+(30, 1, '2023-02-25 00:00:00', NULL, NULL),
+(31, 1, '2023-02-11 00:00:00', NULL, NULL),
+(32, 1, '2023-02-02 00:00:00', NULL, NULL),
+(33, 1, '2023-03-03 00:00:00', NULL, NULL),
+(34, 1, '2023-02-17 00:00:00', NULL, NULL),
+(35, 1, '2023-02-24 00:00:00', NULL, NULL),
+(36, 1, '2023-02-26 00:00:00', NULL, NULL),
+(37, 1, '2023-02-18 00:00:00', NULL, NULL),
+(38, 1, '2023-02-25 00:00:00', NULL, NULL),
+(39, 1, '2023-02-12 00:00:00', NULL, NULL);
 
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `envio`
+--
 
--- inserts
+CREATE TABLE `envio` (
+  `id_pedido` int(6) NOT NULL,
+  `total` decimal(9,2) DEFAULT NULL,
+  `dni_cliente` varchar(9) DEFAULT NULL,
+  `coste_envio` decimal(5,2) DEFAULT NULL,
+  `tiempo_estimado` varchar(30) DEFAULT NULL,
+  `tiempo_real` varchar(30) DEFAULT NULL,
+  `fecha_venta` datetime DEFAULT NULL,
+  `fecha_envio` datetime DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-insert into proveedores values(NULL,"Casaca SL", 28007, "Madrid", "casaca@gmail.com", 733456211, "ES7921000813610123456789");
-insert into compras values (NULL,1, 2022-11-22, 1040, 8.30);
-insert into factura_compra values (1, 0001, 100, 10.4,  1048.3);
-insert into factura_compra values (1, 0002, 100, 20.8,  2080.0);
+--
+-- Volcado de datos para la tabla `envio`
+--
 
+INSERT INTO `envio` (`id_pedido`, `total`, `dni_cliente`, `coste_envio`, `tiempo_estimado`, `tiempo_real`, `fecha_venta`, `fecha_envio`, `direccion`) VALUES
+(1, '26.40', '35678788C', '2.00', '2 dias', '2 dias', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Calle Cortada n34 7A');
 
-insert into productos values 
-(0001,10.4,  13.2, "EX12", "SUPERMARCA", "Limpieza", "Producto altamente eficaz para quitar manchas", 98 ),
-(0002,20.8,  30.50, "EX15", "SUPERMARCA", "Limpieza", "Producto para limpiar madera", 100,0 ),
-(1000,5.50,10.50,NULL,NULL,"Produccion","Mano de obra",1000000,0);
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `escandallo`
+--
 
-insert into clientes values ("35678788C", "Steven", "Piedra", "steven@gmail.com", "Madrid", 28037, "ES7921000813610723462213","629749431");
-insert into factura_venta values (1, 0001, 2, 13.2, 26.4);
+CREATE TABLE `escandallo` (
+  `id_compuesto` varchar(6) NOT NULL,
+  `id_producto` varchar(6) NOT NULL,
+  `nombre` varchar(30) DEFAULT NULL,
+  `uds` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-insert into envio values(1, 26.4, "35678788C", 2, "2 dias", "2 dias", 2022-11-22, 2022-11-23, "Calle Cortada n34 7A" );
+-- --------------------------------------------------------
 
-create table if not exists usuarios (
-    ide_usu int not null auto_increment primary key,
-    nom_usu varchar(10) character set utf8 default null,
-    cor_usu varchar(50),
-    con_usu varchar(100) character set utf8 default null,
-    tip_usu int(2),
-    unique(nom_usu)
-)engine=innoDB default charset=utf8 auto_increment=1;
+--
+-- Estructura de tabla para la tabla `factura_compra`
+--
 
-insert into usuarios (nom_usu, cor_usu,con_usu,tip_usu) values ("adm1","adm1@adm1.com", "admcon1",0);
-insert into usuarios (nom_usu, cor_usu,con_usu,tip_usu) values ("usu1","usu1@usu1.com" ,"con1",1);
+CREATE TABLE `factura_compra` (
+  `id_compra` int(6) NOT NULL,
+  `id_producto` varchar(6) NOT NULL,
+  `cantidad` int(4) DEFAULT NULL,
+  `precio_unitario` decimal(9,2) DEFAULT NULL,
+  `total` decimal(9,2) DEFAULT NULL,
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `factura_compra`
+--
+
+INSERT INTO `factura_compra` (`id_compra`, `id_producto`, `cantidad`, `precio_unitario`, `total`) VALUES
+(1, '1', 100, '10.40', '1048.30'),
+(1, '2', 100, '20.80', '2080.00'),
+(19, '', 100, '10.00', '1000.00'),
+(39, '', 100, '10.00', '1000.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `factura_venta`
+--
+
+CREATE TABLE `factura_venta` (
+  `id_pedido` int(6) NOT NULL,
+  `id_producto` varchar(6) NOT NULL,
+  `cantidad` int(4) DEFAULT NULL,
+  `pvp_unitario` decimal(9,2) DEFAULT NULL,
+  `total` decimal(9,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `factura_venta`
+--
+
+INSERT INTO `factura_venta` (`id_pedido`, `id_producto`, `cantidad`, `pvp_unitario`, `total`) VALUES
+(1, '1', 2, '13.20', '26.40'),
+(1, '2', 10, '30.50', '305.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `poblaciones`
+--
+
+CREATE TABLE `poblaciones` (
+  `cp` varchar(6) NOT NULL,
+  `poblacion` varchar(40) DEFAULT NULL,
+  `provincia` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `poblaciones`
+--
+
+INSERT INTO `poblaciones` (`cp`, `poblacion`, `provincia`) VALUES
+('28007', 'Madrid', 'Madrid'),
+('28037', 'Madrid', 'Madrid');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id_producto` varchar(6) NOT NULL,
+  `precio_unitario` decimal(9,2) DEFAULT NULL,
+  `pvp` decimal(9,2) DEFAULT NULL,
+  `modelo` varchar(30) DEFAULT NULL,
+  `marca` varchar(30) DEFAULT NULL,
+  `categoria` varchar(20) DEFAULT NULL,
+  `descripcion` varchar(60) DEFAULT NULL,
+  `stock` int(6) DEFAULT NULL,
+  `final` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id_producto`, `precio_unitario`, `pvp`, `modelo`, `marca`, `categoria`, `descripcion`, `stock`, `final`) VALUES
+('1', '10.40', '13.20', 'EX12', 'SUPERMARCA', 'Limpieza', 'Producto altamente eficaz para quitar manchas', 98, 0),
+('2', '20.80', '30.50', 'EX15', 'SUPERMARCA', 'Limpieza', 'Producto para limpiar madera', 100, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `id_proveedor` int(3) NOT NULL,
+  `nombre` varchar(40) DEFAULT NULL,
+  `cp` varchar(6) DEFAULT NULL,
+  `correo` varchar(40) DEFAULT NULL,
+  `tlf` varchar(14) DEFAULT NULL,
+  `iban` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores`
+--
+
+INSERT INTO `proveedores` (`id_proveedor`, `nombre`, `cp`, `correo`, `tlf`, `iban`) VALUES
+(1, 'Casaca SA', '28007', 'casaca@gmail.com', '666666777', 'ES7921000813610123456789'),
+(2, 'Merino SA', '28037', 'merino@gmail.com', '666666624', 'ES1123123123123123'),
+(3, 'Steven CORP', '28037', 'merino@gmail.com', '666666624', 'ES1123123123123123');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `ide_usu` int(11) NOT NULL,
+  `nom_usu` varchar(10) DEFAULT NULL,
+  `cor_usu` varchar(50) DEFAULT NULL,
+  `con_usu` varchar(100) DEFAULT NULL,
+  `tip_usu` int(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`ide_usu`, `nom_usu`, `cor_usu`, `con_usu`, `tip_usu`) VALUES
+(1, 'Bryan', 'kenny@kenny.com', '$2y$10$lE5C2w3EwO6C0d7JgIQ/VuJZ5xwj2u7fBC7XIzTxXU75spK8OO/P6', NULL);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`dni`),
+  ADD KEY `fk_cppoblaciones_cpclientes` (`cp`);
+
+--
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id_compra`),
+  ADD KEY `fk_proveedor` (`id_proveedor`);
+
+--
+-- Indices de la tabla `envio`
+--
+ALTER TABLE `envio`
+  ADD PRIMARY KEY (`id_pedido`),
+  ADD KEY `fk_pedidos_dni` (`dni_cliente`);
+
+--
+-- Indices de la tabla `escandallo`
+--
+ALTER TABLE `escandallo`
+  ADD PRIMARY KEY (`id_compuesto`,`id_producto`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
+-- Indices de la tabla `factura_compra`
+--
+ALTER TABLE `factura_compra`
+  ADD PRIMARY KEY (`id_compra`,`id_producto`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
+-- Indices de la tabla `factura_venta`
+--
+ALTER TABLE `factura_venta`
+  ADD PRIMARY KEY (`id_pedido`,`id_producto`),
+  ADD KEY `factura` (`id_producto`);
+
+--
+-- Indices de la tabla `poblaciones`
+--
+ALTER TABLE `poblaciones`
+  ADD PRIMARY KEY (`cp`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id_producto`);
+
+--
+-- Indices de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD PRIMARY KEY (`id_proveedor`),
+  ADD KEY `fk_cppoblaciones_cpproveedores` (`cp`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`ide_usu`),
+  ADD UNIQUE KEY `nom_usu` (`nom_usu`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id_compra` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id_proveedor` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `ide_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD CONSTRAINT `fk_cppoblaciones_cpclientes` FOREIGN KEY (`cp`) REFERENCES `poblaciones` (`cp`);
+
+--
+-- Filtros para la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD CONSTRAINT `fk_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores` (`id_proveedor`);
+
+--
+-- Filtros para la tabla `envio`
+--
+ALTER TABLE `envio`
+  ADD CONSTRAINT `fk_factura_idenvio` FOREIGN KEY (`id_pedido`) REFERENCES `factura_venta` (`id_pedido`),
+  ADD CONSTRAINT `fk_pedidos_dni` FOREIGN KEY (`dni_cliente`) REFERENCES `clientes` (`dni`);
+
+--
+-- Filtros para la tabla `escandallo`
+--
+ALTER TABLE `escandallo`
+  ADD CONSTRAINT `escandallo_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`),
+  ADD CONSTRAINT `fk_escandallo_productos` FOREIGN KEY (`id_compuesto`) REFERENCES `productos` (`id_producto`);
+
+--
+-- Filtros para la tabla `factura_compra`
+--
+ALTER TABLE `factura_compra`
+  ADD CONSTRAINT `fk_facturacompra_idcompra` FOREIGN KEY (`id_compra`) REFERENCES `compras` (`id_compra`);
+
+--
+-- Filtros para la tabla `factura_venta`
+--
+ALTER TABLE `factura_venta`
+  ADD CONSTRAINT `factura` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`);
+
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `factura_compra` (`id_producto`);
+
+--
+-- Filtros para la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD CONSTRAINT `fk_cppoblaciones_cpproveedores` FOREIGN KEY (`cp`) REFERENCES `poblaciones` (`cp`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
 

@@ -214,6 +214,15 @@ function modificarDatos1(form1, boton1, controlador1, div1)
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
 }
 
+function eliminarDatos1(boton1, controlador1, div1){
+    deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
+    // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
+    ajaxGet1(controlador1,div1);
+    // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
+    // ajaxPost2(form1,controlador1,div1);
+    habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
+}
+
 function autent1(form1,boton1,r1,control1){
     deshabilitarControl1(boton1);
     ajaxPostLogin1(form1,r1,control1);
@@ -461,6 +470,17 @@ window.addEventListener("load", function()
         modificarDatos1(formEdicionProveedor1,boton1,controlador1,contenedor2);
       });
     };
+
+    const botonEliminarProveedor = document.getElementById("botonBorrarProveedores1");
+    if(botonEliminarProveedor)
+    {
+        controlador1 = "Controllers/BorrarProveedores1Controller.php";
+        botonEliminarProveedor.addEventListener("click", function(event){
+            event.preventDefault();
+            eliminarDatos1(botonEliminarProveedor,controlador1,contenedor2);
+          });
+        
+    }
     //----------------------Login--------------------
 
     const formLogin1 = document.getElementById("formLogin1");

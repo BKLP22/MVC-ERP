@@ -12,7 +12,7 @@ if(file_exists("../Db/Con1Db.php"))
     require_once "../Db/Con1Db.php";
     // Llamada al modelo
     require_once "../Models/Datos1Model.php";
-}
+} 
 elseif(file_exists("Db/Con1Db.php"))
 {
     // Llamada a la conexion

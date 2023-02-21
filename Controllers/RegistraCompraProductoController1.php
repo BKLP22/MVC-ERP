@@ -39,7 +39,5 @@ $data = $oData->setDataPreparedStatements5($sql1,$idPedido,$id,$stock,$precioUni
 $sql2 = "INSERT INTO productos (id_producto,precio_unitario,pvp,modelo,marca,categoria,descripcion,stock,final) VALUES (?,?,?,?,?,?,?,?,?)";
 $data = $oData2->setDataPreparedStatements9($sql2,$id,$precioUnitario,$pvp,$modelo,$marca,$categoria,$desc,$stock,$final);
 
-// <Button text="Recibir mensaje!" onAction="#recibirMensaje" visible="false" fx:id="botonRecibir"/>
-<Button text="Recibir mensaje!" onAction="#recibirMensaje" visible="false" fx:id="botonRecibir"/>
 
 ?>
