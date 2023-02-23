@@ -4,7 +4,7 @@
             <input type="text" name="textConsultaClientes1" id="textConsultaClientes1" required class="campo1">
             <input type="submit" name="botonConsultaClientes1" id="botonConsultaClientes1" class="boton1" value="Buscar">
             <input type="button" name="botonConsultaClientes2" id="botonConsultaClientes2" class="boton1" value="Ver todo">
-
+            <a href="añadircliente.php" class="boton1">Añadir cliente</a>
         </form>
     </div>
     <div class="contenedor2" id="contenedor2">
