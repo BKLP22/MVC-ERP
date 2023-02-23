@@ -1,6 +1,6 @@
 <?php
 
-    $idproveedor = empty($_POST['textEdicionProveedores1']) ? '' : $_POST['textEdicionProveedores1'];
+    $idcliente = empty($_POST['textEdicionClientes1']) ? '' : $_POST['textEdicionClientes1'];
 
     if(file_exists("../Db/Con1Db.php"))
     {
@@ -22,9 +22,11 @@
     //echo $idproveedor;
     $borrado = 1;
     // Llamada al metodo
-    $sql = "UPDATE PROVEEDORES SET borrado=? where id_proveedor='$idproveedor'";
+    $sql = "UPDATE clientes SET borrado=? where dni='$idcliente'";
 
     $data = $oData->setDataPreparedStatements1($sql, $borrado );
+
+    echo "Cliente actualizado";
 
 
 ?>

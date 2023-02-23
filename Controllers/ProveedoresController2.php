@@ -19,7 +19,7 @@ elseif(file_exists("Db/Con1Db.php"))
 
 $objData = new Datos;
 
-$buscarcliente = "select * from proveedores where id_proveedor like '%$textConsulta1%'";
+$buscarcliente = "select * from proveedores where id_proveedor like '%$textConsulta1%' and borrado=0";
 $data = $objData->getData1($buscarcliente);
 
 if(empty($data))

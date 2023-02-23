@@ -11,6 +11,15 @@
             <input type="submit" name="botonEdicionClientes1" id="botonEdicionClientes1" class="boton1" value="Editar">
         </form>
     </div>
-    <div class="contenedor2" id="contenedor2">
+    <div class="col-12 eliminarproveedores">
+        <div class="col-1 ">
+            <input type="button" name="botonBorrarClientes1" id="botonBorrarClientes1" class="borrar" value="borrar">
+        </div> 
     </div>
+
+</div>    
+
+    <div class="contenedor2" id="contenedor2">
+</div>
+
 </div

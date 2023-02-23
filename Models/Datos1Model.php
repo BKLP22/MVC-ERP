@@ -82,6 +82,30 @@ class Datos
          return $result;
      }
 
+
+        public function setDataPreparedStatements6($sql, $par1, $par2, $par3, $par4, $par5, $par6)
+        {        
+
+            $stmt = $this->mysqli->prepare($sql);
+
+            $stmt->bind_param("ssssss", $par1, $par2, $par3, $par4, $par5, $par6); 
+
+                
+            if(!$stmt->execute())
+            {
+                // $result = "La operacion no se ha podido realizar.";
+                // echo "Detalle del error en la consulta (setData1) - ";
+                // echo "Numero del error: " . $this->mysqli->errno . " - ";
+                // echo "Descripcion del error: " . $this->mysqli->error;
+            }
+            else
+            {
+                $result = "Operacion realizada con exito";
+            }
+            $this->mysqli->close();
+            return $result;
+        }     
+
             // No devuelve datos de la BD (insert, update, delete con consultas preparadas)
             public function setDataPreparedStatements5($sql, $par1, $par2, $par3, $par4, $par5)
             {
@@ -144,13 +168,10 @@ class Datos
         return $result;
     }
 
-    public function setDataPreparedStatements6($sql, $par1, $par2, $par3, $par4, $par5, $par6)
-    {        
-
+    public function setDataPreparedStatements1($sql, $par1)
+    {
         $stmt = $this->mysqli->prepare($sql);
-
-        $stmt->bind_param("ssssss", $par1, $par2, $par3, $par4, $par5, $par6); 
-
+        $stmt->bind_param("s", $par1); // is = string, string
             
         if(!$stmt->execute())
         {
@@ -166,6 +187,7 @@ class Datos
         $this->mysqli->close();
         return $result;
     }
+
 
     
       // No devuelve datos de la BD (insert, update, delete con consultas preparadas)

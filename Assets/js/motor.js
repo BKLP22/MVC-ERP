@@ -214,10 +214,10 @@ function modificarDatos1(form1, boton1, controlador1, div1)
   habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
 }
 
-function eliminarDatos1(boton1, controlador1, div1){
+function eliminarDatos1(form1, boton1, controlador1, div1){
     deshabilitarControl1(boton1, "boton1", "boton1Inhabilitado");
     // Opcion 1: El mensaje se muestra en un div (ajaxPost1)
-    ajaxGet1(controlador1,div1);
+    ajaxPost1(form1, controlador1,div1);
     // Opcion 2: El mensaje se muestra en una alert (ajaxPost2)
     // ajaxPost2(form1,controlador1,div1);
     habilitarControl1(boton1, "boton1Inhabilitado", "boton1");
@@ -303,6 +303,17 @@ window.addEventListener("load", function()
         event.preventDefault();
         modificarDatos1(formEdicionClientes1,boton1,controlador1,contenedor2);
       });
+    }
+
+    const botonEliminarCliente = document.getElementById("botonBorrarClientes1");
+    if(botonEliminarCliente)
+    {
+        controlador1 = "Controllers/BorrarClientes1Controller.php";
+        botonEliminarCliente.addEventListener("click", function(event){
+            event.preventDefault();
+            eliminarDatos1(formEdicionClientes1,botonEliminarCliente,controlador1,contenedor2);
+          });
+        
     }
     //Eventos de busqueda y ver todos de Ventas
 
@@ -491,7 +502,7 @@ window.addEventListener("load", function()
         controlador1 = "Controllers/BorrarProveedores1Controller.php";
         botonEliminarProveedor.addEventListener("click", function(event){
             event.preventDefault();
-            eliminarDatos1(botonEliminarProveedor,controlador1,contenedor2);
+            eliminarDatos1(formEdicionProveedor1,botonEliminarProveedor,controlador1,contenedor2);
           });
         
     }

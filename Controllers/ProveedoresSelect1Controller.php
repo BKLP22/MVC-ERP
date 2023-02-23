@@ -13,11 +13,11 @@ elseif(file_exists("Db/Con1Db.php"))
     require_once "Db/Con1Db.php";
     // Llamada al modelo
     require_once "Models/Datos1Model.php";
-}
+} 
 
 $objData = new Datos;
 
-$buscaproducto = "select id_proveedor,nombre from proveedores";
+$buscaproducto = "select id_proveedor,nombre from proveedores where borrado=0";
 $data = $objData->getData1($buscaproducto);
 
 if(empty($data))
