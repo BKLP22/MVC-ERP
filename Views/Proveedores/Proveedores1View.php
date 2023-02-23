@@ -4,7 +4,8 @@
             <input type="text" name="textConsultaProveedores1" id="textConsultaProveedores1" required class="campo1">
             <input type="submit" name="botonConsultaProveedores1" id="botonConsultaProveedores1" class="boton1" value="Buscar">
             <input type="button" name="botonConsultaProveedores2" id="botonConsultaProveedores2" class="boton1" value="Ver todo">
-           
+            <a href="añadirproveedor.php" class="boton1">Añadir proveedor</a>
+
         </form>
         
     </div>

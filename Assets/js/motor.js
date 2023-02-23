@@ -283,18 +283,27 @@ window.addEventListener("load", function()
         });
     }
     const formEdicionClientes1 = document.getElementById("formEdicionClientes1");
-    // Paso 2 - Asociación del elemento al evento (submit) y llamada a la función
     if(formEdicionClientes1)
     {
-      // Referencia de los elementos
       boton1 = document.getElementById("botonEdicionClientes1");
       controlador1 = "Controllers/EditarClientesController2.php";
-      // Evento y llamada a la función
       formEdicionClientes1.addEventListener("submit", function(event){
         event.preventDefault();
         modificarDatos1(formEdicionClientes1,boton1,controlador1,contenedor2);
       });
     }
+
+    const formRegistrarClientes1 = document.getElementById("formRegistraCliente");
+    if(formRegistrarClientes1)
+    {
+      boton1 = document.getElementById("botonRegistraCliente");
+      controlador1 = "Controllers/AñadirClientesController3.php";
+      formRegistrarClientes1.addEventListener("submit", function(event){
+        event.preventDefault();
+        insertarDatos1(formRegistrarClientes1,boton1,controlador1,contenedor2);
+      });
+    }
+    
     //Eventos de busqueda y ver todos de Ventas
 
     const formConsulta001 = this.document.getElementById("formConsultaVentas1");
@@ -475,6 +484,20 @@ window.addEventListener("load", function()
         modificarDatos1(formEdicionProveedor1,boton1,controlador1,contenedor2);
       });
     };
+
+    
+    const formRegistraProveedor = this.document.getElementById("formRegistraProveedor");
+    if(formRegistraProveedor)
+    {
+        boton1=this.document.getElementById("botonRegistraProveedor");
+        controlador1="Controllers/AñadirProveedoresController3.php";
+        formRegistraProveedor.addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            seleccionarDatos1(formRegistraProveedor,boton1,controlador1,contenedor2);
+        });
+    }
+
     //----------------------Login--------------------
 
     const formLogin1 = document.getElementById("formLogin1");
