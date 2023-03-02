@@ -17,7 +17,7 @@ elseif(file_exists("Db/Con1Db.php"))
 
 $objData = new Datos;
 
-$buscaproducto = "select * from clientes";
+$buscaproducto = "select * from clientes where borrado=0";
 $data = $objData->getData1($buscaproducto);
 
 if(empty($data))

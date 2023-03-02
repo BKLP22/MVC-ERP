@@ -320,6 +320,7 @@ window.addEventListener("load", function()
         controlador1 = "Controllers/BorrarClientes1Controller.php";
         botonEliminarCliente.addEventListener("click", function(event){
             event.preventDefault();
+            // return confirm('Estas seguro de que quieres borrar');
             eliminarDatos1(formEdicionClientes1,botonEliminarCliente,controlador1,contenedor2);
           });
         
