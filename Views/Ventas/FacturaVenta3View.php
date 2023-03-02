@@ -1,4 +1,5 @@
         <div class="pt-2">
+            <h1>Pagina en construccion</h1>
 
             <form action="" id="formRegistraVenta1">
                 <label for="">Producto: </label>

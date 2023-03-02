@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-02-2023 a las 12:46:17
+-- Tiempo de generación: 02-03-2023 a las 12:19:14
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -32,18 +32,20 @@ CREATE TABLE `clientes` (
   `nombre` varchar(30) DEFAULT NULL,
   `apellido` varchar(30) DEFAULT NULL,
   `correo` varchar(40) DEFAULT NULL,
-  `ciudad` varchar(30) DEFAULT NULL,
   `cp` varchar(6) DEFAULT NULL,
   `iban` varchar(30) DEFAULT NULL,
-  `tlf` varchar(14) DEFAULT NULL
+  `tlf` varchar(14) DEFAULT NULL,
+  `borrado` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`dni`, `nombre`, `apellido`, `correo`, `ciudad`, `cp`, `iban`, `tlf`) VALUES
-('35678788C', 'Steven', 'Miguel', 'steven@gmail.com', 'Madrid', '28037', 'ES7921000813610723462213', '629749431');
+INSERT INTO `clientes` (`dni`, `nombre`, `apellido`, `correo`, `cp`, `iban`, `tlf`, `borrado`) VALUES
+('23445679', 'budgc', 'aooo', 'aooo', '28007', 'ES123121312321', '8765433', 1),
+('35678788C', 'Steven', 'Miguel', 'steven@gmail.com', '28037', 'ES7921000813610723462213', '629749431', 0),
+('53959668N', 'Bryan', 'Loor', 'kenny@kenny.com', '28007', 'ES123121312321', '1234566789', 0);
 
 -- --------------------------------------------------------
 
@@ -100,7 +102,16 @@ INSERT INTO `compras` (`id_compra`, `id_proveedor`, `fecha_compra`, `precio`, `c
 (36, 1, '2023-02-26 00:00:00', NULL, NULL),
 (37, 1, '2023-02-18 00:00:00', NULL, NULL),
 (38, 1, '2023-02-25 00:00:00', NULL, NULL),
-(39, 1, '2023-02-12 00:00:00', NULL, NULL);
+(39, 1, '2023-02-12 00:00:00', NULL, NULL),
+(40, 3, '2023-02-17 00:00:00', NULL, NULL),
+(41, 2, '2023-02-15 00:00:00', NULL, NULL),
+(42, 2, '2023-02-10 00:00:00', NULL, NULL),
+(43, 2, '2023-02-12 00:00:00', NULL, NULL),
+(44, 2, '2023-02-12 00:00:00', NULL, NULL),
+(45, 3, '3333-02-12 00:00:00', NULL, NULL),
+(46, 2, '4444-03-12 00:00:00', NULL, NULL),
+(47, 2, '1222-12-12 00:00:00', NULL, NULL),
+(48, 1, '0000-00-00 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,8 +162,7 @@ CREATE TABLE `factura_compra` (
   `id_producto` varchar(6) NOT NULL,
   `cantidad` int(4) DEFAULT NULL,
   `precio_unitario` decimal(9,2) DEFAULT NULL,
-  `total` decimal(9,2) DEFAULT NULL,
-
+  `total` decimal(9,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -163,7 +173,16 @@ INSERT INTO `factura_compra` (`id_compra`, `id_producto`, `cantidad`, `precio_un
 (1, '1', 100, '10.40', '1048.30'),
 (1, '2', 100, '20.80', '2080.00'),
 (19, '', 100, '10.00', '1000.00'),
-(39, '', 100, '10.00', '1000.00');
+(39, '', 100, '10.00', '1000.00'),
+(40, '47', 100, '10.00', '1000.00'),
+(40, '48', 200, '10.00', '2000.00'),
+(41, '2', 334, '3434.00', '1146956.00'),
+(42, '3', 222, '122.00', '27084.00'),
+(43, '47', 333, '333.00', '110889.00'),
+(44, '2', 111, '1111.00', '123321.00'),
+(44, '3', 1231, '12312.00', '9999999.99'),
+(47, '3', 444, '222.00', '98568.00'),
+(47, '47', 2333, '33.00', '76989.00');
 
 -- --------------------------------------------------------
 
@@ -222,7 +241,7 @@ CREATE TABLE `productos` (
   `categoria` varchar(20) DEFAULT NULL,
   `descripcion` varchar(60) DEFAULT NULL,
   `stock` int(6) DEFAULT NULL,
-  `final` tinyint(1) NOT NULL
+  `final` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -230,8 +249,10 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `precio_unitario`, `pvp`, `modelo`, `marca`, `categoria`, `descripcion`, `stock`, `final`) VALUES
-('1', '10.40', '13.20', 'EX12', 'SUPERMARCA', 'Limpieza', 'Producto altamente eficaz para quitar manchas', 98, 0),
-('2', '20.80', '30.50', 'EX15', 'SUPERMARCA', 'Limpieza', 'Producto para limpiar madera', 100, 0);
+('1', '10.40', '13.20', 'EX12', 'SUPERMARCA', 'Limpieza', 'Producto altamente ', 98, 0),
+('2', '20.80', '30.50', 'EX15', 'SUPERMARCA', 'Limpieza', 'Producto para limpiar madera', 100, 0),
+('3', '12312.00', '111133.00', 'accion', 'accion', 'accion123', 'accionaccion', 101, 0),
+('47', '33.00', '555.00', 'Prueba', 'Prueba', 'prueba', '4gg', 2333, 0);
 
 -- --------------------------------------------------------
 
@@ -245,17 +266,19 @@ CREATE TABLE `proveedores` (
   `cp` varchar(6) DEFAULT NULL,
   `correo` varchar(40) DEFAULT NULL,
   `tlf` varchar(14) DEFAULT NULL,
-  `iban` varchar(30) DEFAULT NULL
+  `iban` varchar(30) DEFAULT NULL,
+  `borrado` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `proveedores`
 --
 
-INSERT INTO `proveedores` (`id_proveedor`, `nombre`, `cp`, `correo`, `tlf`, `iban`) VALUES
-(1, 'Casaca SA', '28007', 'casaca@gmail.com', '666666777', 'ES7921000813610123456789'),
-(2, 'Merino SA', '28037', 'merino@gmail.com', '666666624', 'ES1123123123123123'),
-(3, 'Steven CORP', '28037', 'merino@gmail.com', '666666624', 'ES1123123123123123');
+INSERT INTO `proveedores` (`id_proveedor`, `nombre`, `cp`, `correo`, `tlf`, `iban`, `borrado`) VALUES
+(1, 'Casaca SA', '28007', 'casaca@gmail.com', '66666688', 'ES7921000813610123456789', 0),
+(2, 'Merino SA', '28037', 'merino@gmail.com', '666666624', 'ES1123123123123123', 0),
+(3, 'Steven CORP', '28037', 'merino@gmail.com', '666666624', 'ES1123123123123123', 0),
+(53959668, 'Bryan', '28007', 'kenny@kenny.com', '635295995', 'ES123121312321', 0);
 
 -- --------------------------------------------------------
 
@@ -358,13 +381,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id_compra` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_compra` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `id_proveedor` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proveedor` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53959669;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -430,8 +453,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
-
-
