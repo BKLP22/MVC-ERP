@@ -4,6 +4,7 @@
             <input type="text" name="textConsultaVentas1" id="textConsultaVentas1" required class="campo1">
             <input type="submit" name="botonConsultaVentas1" id="botonConsultaVentas1" class="boton1" value="Buscar">
             <input type="button" name="botonConsultaVentas2" id="botonConsultaVentas2" class="boton1" value="Ver todo">
+            <a href="registrarventa.php" class="boton1">Registrar venta</a>
 
         </form>
     </div>

@@ -27,7 +27,6 @@ function ajaxPost1(form1,controlador1,div1)
     Ajax1.addEventListener("load",function(event)
     {
         document.getElementById(div1.id).innerHTML = this.responseText;
-        
     });
     //5.- Error en el envio 
     Ajax1.addEventListener("error",function(event)
@@ -79,6 +78,7 @@ function ajaxPost3(form1,controlador1,input1)
     // 5.- Éxito en el envío
     Ajax1.addEventListener("load",function(event)
     {
+        console.log(this.responseText)
         document.getElementById(input1.id).value = this.responseText;
         
     });
@@ -224,8 +224,10 @@ function autent1(form1,boton1,r1,control1){
 
 window.addEventListener("load", function()
 {
+    let boton0;
     let boton1;
     let boton2;
+    let controlador0;
     let controlador1;
     let controlador2;
     let idDetalles;
@@ -394,6 +396,21 @@ window.addEventListener("load", function()
         });
     }
 
+    
+    const formRegistrarVenta0 = this.document.getElementById("formRegistrarVenta0");
+    if(formRegistrarVenta0)
+    {
+        boton0= this.document.getElementById('botonRegistrarVenta1');
+        controlador0="Controllers/RegistraVentaInicioController1.php";
+        const spanPedido = this.document.getElementById('numeroPedido');
+        formRegistrarVenta0.addEventListener('submit',function(event)
+        {
+            event.preventDefault();
+            insertarDatosSinReset(formRegistrarVenta0,boton0,controlador0,spanPedido);
+        });
+    }
+
+
     //formRegistraProducto1
 
     const formRegistraProducto1 = this.document.getElementById("formRegistraProducto1");
@@ -423,18 +440,41 @@ window.addEventListener("load", function()
       });
     };
 
+    
+    const formRegistraVenta1 = this.document.getElementById("formRegistraVenta1");
+    if(formRegistraVenta1)
+    {
+        boton1=this.document.getElementById("botonProductoSelect");
+        controlador1="Controllers/ProductosController3.php";
+        formRegistraVenta1.addEventListener("submit",function(event)
+        {
+            console.log("hola")
+            event.preventDefault();
+            seleccionarDatos1(formRegistraVenta1,boton1,controlador1,contenedor2);
+        });
+    }
+    const formRegistraVenta2 = this.document.getElementById('formRegistraVenta2');
+    if(formRegistraVenta2)
+    {
+        boton2=this.document.getElementById("botonAñadirProducto");
+        controlador2="Controllers/ProductosController4.php";
+        formRegistraVenta2.addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            seleccionarDatos1(formRegistraVenta2,boton2,controlador2,contenedor2);
+        });
+    }
+
     //Eventos de busqueda y ver todo de Factura Compra
     const formConsulta000000001 = this.document.getElementById("formFacturaCompra1");
     if(formConsulta000000001)
     {
         idDetalles=this.document.getElementById("idPedidoFacturaCompra");
-        console.log(idDetalles.value);
         boton1=this.document.getElementById("botonFacturaCompra1");
         controlador1="Controllers/FacturaCompraController2.php";
         formConsulta000000001.addEventListener("submit",function(event)
         {
             event.preventDefault();
-            console.log
             subconsultaDetalles(formConsulta000000001,boton1,controlador1,contenedor2,idDetalles.value);
         });
     }
